@@ -15,6 +15,13 @@ VALUES
 if (!mysqli_query($con, $sql)) {
     die('Error: ' . mysqli_error($con));
 }
-echo "1 record added";
+$result = mysqli_query($con, "SELECT * FROM Persons ORDER BY LastN");
+
+while ($row = mysqli_fetch_array($result)) {
+    echo $row['FirstN'];
+    echo " " . $row['LastN'];
+    echo " " . $row['Age'];
+    echo "<br>";
+}
 
 mysqli_close($con);
