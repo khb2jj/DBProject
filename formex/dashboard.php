@@ -17,8 +17,6 @@
         <p>
         <p><a href="CustomerInsert.php">Insert New Record</a></p>
         <p><a href="view.php">View Records</a>
-        <p>
-        <p><a href="logout.php">Logout</a></p>
     </div>
 </body>
 
