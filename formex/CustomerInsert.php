@@ -22,7 +22,7 @@ if(isset($_POST['new']) && $_POST['new']==1){
             die('Error: ' . mysqli_error($con));
         }
     }
-
+//
     $status = "New Record Inserted Successfully.
     </br></br><a href='view.php'>View Inserted Record</a>";
 }
