@@ -10,6 +10,7 @@ function employeesInsert($em_id, $username, $password, $name, $store_id, $phone,
     if (!mysqli_query($con, $sql)) {
         die('Error: ' . mysqli_error($con));
     }
+    mysqli_close($con);
 }
 
 function employeesDelete($em_id)
@@ -21,6 +22,7 @@ function employeesDelete($em_id)
     if (!mysqli_query($con, $sql)) {
         die('Error: ' . mysqli_error($con));
     }
+    mysqli_close($con);
 }
 
 function employeesSelect()

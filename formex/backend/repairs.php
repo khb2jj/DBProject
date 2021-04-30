@@ -10,6 +10,8 @@ function repairsInsert($repairID, $customerID, $employeeID, $repair_description,
     if (!mysqli_query($con, $sql)) {
         die('Error: ' . mysqli_error($con));
     }
+    mysqli_close($con);
+
 }
 
 function repairsDelete($repairID)
@@ -21,6 +23,8 @@ function repairsDelete($repairID)
     if (!mysqli_query($con, $sql)) {
         die('Error: ' . mysqli_error($con));
     }
+    mysqli_close($con);
+
 }
 
 function repairsSelect()

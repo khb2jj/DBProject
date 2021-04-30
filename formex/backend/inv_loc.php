@@ -10,6 +10,8 @@ function inv_locInsert($productID, $store_ID, $quantity)
     if (!mysqli_query($con, $sql)) {
         die('Error: ' . mysqli_error($con));
     }
+    mysqli_close($con);
+
 }
 
 function inv_locDelete($productID, $store_ID)
@@ -21,6 +23,8 @@ function inv_locDelete($productID, $store_ID)
     if (!mysqli_query($con, $sql)) {
         die('Error: ' . mysqli_error($con));
     }
+    mysqli_close($con);
+
 }
 
 function inv_locSelect()

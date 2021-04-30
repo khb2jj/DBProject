@@ -10,6 +10,8 @@ function purchasesInsert($purchaseID, $customerID, $productID, $date)
     if (!mysqli_query($con, $sql)) {
         die('Error: ' . mysqli_error($con));
     }
+    mysqli_close($con);
+
 }
 
 function purchasesDelete($purchaseID)
@@ -21,6 +23,8 @@ function purchasesDelete($purchaseID)
     if (!mysqli_query($con, $sql)) {
         die('Error: ' . mysqli_error($con));
     }
+    mysqli_close($con);
+
 }
 
 function purchasesSelect()

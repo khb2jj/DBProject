@@ -10,6 +10,8 @@ function storesInsert($store_id, $address, $managerID)
     if (!mysqli_query($con, $sql)) {
         die('Error: ' . mysqli_error($con));
     }
+    mysqli_close($con);
+
 }
 
 function storesDelete($store_id)
@@ -21,6 +23,8 @@ function storesDelete($store_id)
     if (!mysqli_query($con, $sql)) {
         die('Error: ' . mysqli_error($con));
     }
+    mysqli_close($con);
+
 }
 
 function storesSelect()

@@ -10,6 +10,8 @@ function inventoryInsert($productID, $brand_name, $product_name, $price, $manufa
     if (!mysqli_query($con, $sql)) {
         die('Error: ' . mysqli_error($con));
     }
+    mysqli_close($con);
+
 }
 
 function inventoryDelete($productID)
@@ -21,6 +23,8 @@ function inventoryDelete($productID)
     if (!mysqli_query($con, $sql)) {
         die('Error: ' . mysqli_error($con));
     }
+    mysqli_close($con);
+
 }
 
 function inventorySelect()

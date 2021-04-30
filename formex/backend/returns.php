@@ -10,6 +10,8 @@ function returnsInsert($returnID, $customerID, $productID, $date)
     if (!mysqli_query($con, $sql)) {
         die('Error: ' . mysqli_error($con));
     }
+    mysqli_close($con);
+
 }
 
 function returnsDelete($returnID)
@@ -21,6 +23,8 @@ function returnsDelete($returnID)
     if (!mysqli_query($con, $sql)) {
         die('Error: ' . mysqli_error($con));
     }
+    mysqli_close($con);
+
 }
 
 function returnsSelect()

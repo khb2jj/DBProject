@@ -10,6 +10,7 @@ function customerInsert($customerID, $email, $phone, $address, $name)
     if (!mysqli_query($con, $sql)) {
         die('Error: ' . mysqli_error($con));
     }
+    mysqli_close($con);
 }
 
 function customerDelete($customerID)
@@ -21,6 +22,7 @@ function customerDelete($customerID)
     if (!mysqli_query($con, $sql)) {
         die('Error: ' . mysqli_error($con));
     }
+    mysqli_close($con);
 }
 
 function customerSelect()

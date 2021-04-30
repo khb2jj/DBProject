@@ -10,6 +10,8 @@ function rewardsInsert($rewardsID, $customerID, $r_available, $r_expiration)
     if (!mysqli_query($con, $sql)) {
         die('Error: ' . mysqli_error($con));
     }
+    mysqli_close($con);
+
 }
 
 function rewardsDelete($rewardsID)
@@ -21,6 +23,8 @@ function rewardsDelete($rewardsID)
     if (!mysqli_query($con, $sql)) {
         die('Error: ' . mysqli_error($con));
     }
+    mysqli_close($con);
+
 }
 
 function returnsSelect()

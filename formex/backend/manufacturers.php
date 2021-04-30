@@ -10,6 +10,8 @@ function manufacturersInsert($man_id, $name, $phone)
     if (!mysqli_query($con, $sql)) {
         die('Error: ' . mysqli_error($con));
     }
+    mysqli_close($con);
+
 }
 
 function manufacturersDelete($man_id)
@@ -21,6 +23,8 @@ function manufacturersDelete($man_id)
     if (!mysqli_query($con, $sql)) {
         die('Error: ' . mysqli_error($con));
     }
+    mysqli_close($con);
+
 }
 
 function manufacturersSelect()
