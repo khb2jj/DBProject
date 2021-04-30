@@ -48,11 +48,13 @@
 
     <!-- If the user is logged in then display the option to log out. -->
     <?php if(isset($_SESSION['user'])) { ?>
-    <div class="w3-container w3-row">
-      <div class="w3-col s8 w3-bar">
-        <h5><a href="Logout.php"><i class="fa fa-arrow-circle-left fa-md" style="padding-right:10px;"></i>Logout</a></h5>
+    
+      <div class="w3-container w3-row">
+        <div class="w3-col s8 w3-bar">
+          <h5><a href="Logout.php"><i class="fa fa-arrow-circle-left fa-md" style="padding-right:10px;"></i>Logout</a></h5>
+        </div>
       </div>
-    </div>
+
     <?php } // close if?>
 
     <hr>
