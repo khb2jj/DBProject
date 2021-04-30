@@ -161,12 +161,12 @@ include('header.php');
                         $row["phone"] . "</td><td>" .
                         $row["address"] . "</td><td>" .
                         $row["name"] . "</td>
-                    // <td> 
-                    //     <form action='customerupdate.php>\"' method=\"post\">
-                    //     <input type=\"hidden\" name=\"a\" value=\"2\">
-                    //     <input type=\"submit\" name=\"submit\" value=\"Delete\">
-                    //     </form>
-                    // </td>
+                    <td> 
+                        <form action='customerupdate.php>\"' method=\"post\">
+                        <input type=\"hidden\" name=\"a\" value=\"2\">
+                        <input type=\"submit\" name=\"submit\" value=\"Delete\">
+                        </form>
+                    </td>
                     </tr>";
                 }
             } else {
