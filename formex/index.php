@@ -61,43 +61,30 @@ include('header.php');
     <div class="w3-panel">
         <div class="w3-row-padding" style="margin:0 -16px">
             <div class="w3-container">
-                <h5>Feeds</h5>
+                <h5>Inventory</h5>
                 <table class="w3-table w3-striped w3-white">
                     <tr>
-                        <td><i class="fa fa-user w3-text-blue w3-large"></i></td>
-                        <td>New record, over 90 views.</td>
-                        <td><i>10 mins</i></td>
+                        <td>Product ID</td>
+                        <td>Brand</td>
+                        <td>Product Name</td>
+                        <td>Price</td>
+                        <td>Manufacturer ID</td>
                     </tr>
-                    <tr>
-                        <td><i class="fa fa-bell w3-text-red w3-large"></i></td>
-                        <td>Database error.</td>
-                        <td><i>15 mins</i></td>
-                    </tr>
-                    <tr>
-                        <td><i class="fa fa-users w3-text-yellow w3-large"></i></td>
-                        <td>New record, over 40 users.</td>
-                        <td><i>17 mins</i></td>
-                    </tr>
-                    <tr>
-                        <td><i class="fa fa-comment w3-text-red w3-large"></i></td>
-                        <td>New comments.</td>
-                        <td><i>25 mins</i></td>
-                    </tr>
-                    <tr>
-                        <td><i class="fa fa-bookmark w3-text-blue w3-large"></i></td>
-                        <td>Check transactions.</td>
-                        <td><i>28 mins</i></td>
-                    </tr>
-                    <tr>
-                        <td><i class="fa fa-laptop w3-text-red w3-large"></i></td>
-                        <td>CPU overload.</td>
-                        <td><i>35 mins</i></td>
-                    </tr>
-                    <tr>
-                        <td><i class="fa fa-share-alt w3-text-green w3-large"></i></td>
-                        <td>New shares.</td>
-                        <td><i>39 mins</i></td>
-                    </tr>
+                    <?php
+                    include('backend/db.php');
+                    $sql = "SELECT * FROM (inventory NATURAL JOIN manufacturers)";
+                    $result = $con->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        // output data of each row
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr><td>" . $row["productID"] . "</td><td>" . $row["brand_name"] . "</td><td>" . $row["product_name"] . "</td><td>" . $row["price"] ."</td><td>" . $row["name"] ."</td></tr>";
+                        }
+                    } else {
+                        echo "0 results";
+                    }
+                    $con->close();
+                    ?>
                 </table>
             </div>
         </div>
@@ -134,16 +121,16 @@ include('header.php');
             include('backend/db.php');
             $sql = "SELECT * FROM stores";
             $result = $con->query($sql);
-            
+
             if ($result->num_rows > 0) {
                 // output data of each row
-                while($row = $result->fetch_assoc()) {
-                  echo "<tr><td>" . $row["store_id"] . "</td><td>" . $row["address"] . "</td><td>" . $row["managerID"] . "</td></tr>";
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr><td>" . $row["store_id"] . "</td><td>" . $row["address"] . "</td><td>" . $row["managerID"] . "</td></tr>";
                 }
-              } else {
+            } else {
                 echo "0 results";
-              }
-              $con->close();
+            }
+            $con->close();
             ?>
         </table><br>
         <button class="w3-button w3-dark-grey">More Countries  <i class="fa fa-arrow-right"></i></button>

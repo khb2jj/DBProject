@@ -1,11 +1,11 @@
 <?php
 
-function manufacturersInsert($man_id, $name, $phone)
+function manufacturersInsert($manufacturerID, $name, $phone)
 {
     require('db.php');
     $sql = "INSERT INTO manufacturers
-    (`man_id`,`name`, `phone`) VALUES
-    ('$man_id','$name', '$phone')";
+    (`manufacturerID`,`name`, `phone`) VALUES
+    ('$manufacturerID','$name', '$phone')";
 
     if (!mysqli_query($con, $sql)) {
         die('Error: ' . mysqli_error($con));
@@ -14,11 +14,11 @@ function manufacturersInsert($man_id, $name, $phone)
 
 }
 
-function manufacturersDelete($man_id)
+function manufacturersDelete($manufacturerID)
 {
     require('db.php');
     $sql = "DELETE FROM manufacturers
-    WHERE man_id = '$man_id'";
+    WHERE manufacturerID = '$manufacturerID'";
 
     if (!mysqli_query($con, $sql)) {
         die('Error: ' . mysqli_error($con));
