@@ -9,10 +9,12 @@
         if(!isset($_SESSION['user'])) {
             include('Login.php');
         }
+        // if the user is logged in, display the home page content
         else {
     ?>
     
     <?php } // close out else tag ?>
+    
     <script>
         // Get the Sidebar
         var mySidebar = document.getElementById("mySidebar");

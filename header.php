@@ -36,7 +36,7 @@
   <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
     <div class="w3-container w3-row">
       <div class="w3-col s8 w3-bar">
-        <h5><i class="fa fa-user-circle" style="padding-right:10px;"></i>Welcome, <strong>User</strong></h5>
+        <h5><i class="fa fa-user-circle" style="padding-right:10px;"></i>Welcome <b><?php if(isset($_SESSION['user'])) echo $_SESSION['user'] . "!"?></b></h5>
       </div>
     </div>
 
@@ -48,15 +48,15 @@
 
     <div class="w3-bar-block">
       <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-      <a href="index.php" class="w3-bar-item w3-button w3-padding w3"><i class="fa fa-users fa-fw"></i>  Overview</a>
-      <a href="customerupdate.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Update Customers</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Traffic</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Geo</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Orders</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  News</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  General</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br>
+      <a href="Home.php" class="w3-bar-item w3-button w3-padding w3"><i class="fa fa-home fa-fw"></i>  Home</a>
+      <a href="Customers.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Customers</a>
+      <a href="Employees.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-vcard fa-fw"></i>  Employees</a>
+      <a href="Stores.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-dropbox fa-fw"></i>  Stores & Manufacturers</a>
+      <a href="Inventory.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Inventory</a>
+      <a href="Repairs.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cogs fa-fw"></i>  Repairs</a>
+      <a href="Returns.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  Returns</a>
+      <a href="Purchases.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-dollar fa-fw"></i>  Purchases</a>
+      <a href="Rewards.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-gift fa-fw"></i>  Rewards</a><br><br>
     </div>
 
   <!-- Close sidebar-->
