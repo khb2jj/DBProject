@@ -9,7 +9,17 @@
         $_SESSION['pwd'] = $_POST['password'];  // in reality, don't save password directly, hash instead
     }
 ?>
-
+<style>
+.center {
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+     width: 50%;
+   }
+   </style>
+    <img src="images/tlogo.png" style="width:500px" class="center">
+    </br>
+    </br>
 <div class="container" style="text-align: center;">
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
         <div class="form-group">
