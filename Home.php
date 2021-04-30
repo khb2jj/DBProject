@@ -22,7 +22,9 @@
         // make the user login first 
         if(!isset($_SESSION['user'])) {
     ?>
-        
+
+        <img src="images/tlogo.png" style="width:500px" class="center">
+        <br> <br> <br>
         <div class="container" style="text-align: center;">
             <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
                 <div class="form-group">
