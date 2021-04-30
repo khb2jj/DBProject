@@ -40,6 +40,15 @@
       </div>
     </div>
 
+    <!-- If the user is logged in then display the option to log out. -->
+    <?php if(isset($_SESSION['user'])) { ?>
+    <div class="w3-container w3-row">
+      <div class="w3-col s8 w3-bar">
+        <h5><a href="Logout.php"><i class="fa fa-arrow-circle-left fa-md" style="padding-right:10px;"></i>Logout</a></h5>
+      </div>
+    </div>
+    <?php } // close if?>
+
     <hr>
 
     <div class="w3-container">
@@ -54,7 +63,7 @@
       <a href="Stores.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-dropbox fa-fw"></i>  Stores & Manufacturers</a>
       <a href="Inventory.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Inventory</a>
       <a href="Repairs.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cogs fa-fw"></i>  Repairs</a>
-      <a href="Returns.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  Returns</a>
+      <a href="Returns.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-mail-reply fa-fw"></i>  Returns</a>
       <a href="Purchases.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-dollar fa-fw"></i>  Purchases</a>
       <a href="Rewards.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-gift fa-fw"></i>  Rewards</a><br><br>
     </div>
