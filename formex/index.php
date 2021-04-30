@@ -78,7 +78,7 @@ include('header.php');
                     if ($result->num_rows > 0) {
                         // output data of each row
                         while ($row = $result->fetch_assoc()) {
-                            echo "<tr><td>" . $row["productID"] . "</td><td>" . $row["brand_name"] . "</td><td>" . $row["product_name"] . "</td><td>" . $row["price"] ."</td><td>" . $row["name"] ."</td></tr>";
+                            echo "<tr><td>" . $row["productID"] . "</td><td>" . $row["brand_name"] . "</td><td>" . $row["product_name"] . "</td><td>" . $row["price"] . "</td><td>" . $row["name"] . "</td></tr>";
                         }
                     } else {
                         echo "0 results";
@@ -137,21 +137,45 @@ include('header.php');
     </div>
     <hr>
     <div class="w3-container">
-        <h5>Recent Users</h5>
-        <ul class="w3-ul w3-card-4 w3-white">
-            <li class="w3-padding-16">
-                <img src="/w3images/avatar2.png" class="w3-left w3-circle w3-margin-right" style="width:35px">
-                <span class="w3-xlarge">Mike</span><br>
-            </li>
-            <li class="w3-padding-16">
-                <img src="/w3images/avatar5.png" class="w3-left w3-circle w3-margin-right" style="width:35px">
-                <span class="w3-xlarge">Jill</span><br>
-            </li>
-            <li class="w3-padding-16">
-                <img src="/w3images/avatar6.png" class="w3-left w3-circle w3-margin-right" style="width:35px">
-                <span class="w3-xlarge">Jane</span><br>
-            </li>
-        </ul>
+        <h5>Customers</h5>
+        <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
+            <tr>
+                <td>Customer ID</td>
+                <td>Email</td>
+                <td>Phone</td>
+                <td>Address</td>
+                <td>Name</td>
+            </tr>
+            <?php
+            include('backend/db.php');
+            include('backend/customers.php');
+            $sql = "SELECT * FROM customers";
+            $result = $con->query($sql);
+
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr><td>" .
+                        $row["customerID"] . "</td><td>" .
+                        $row["email"] . "</td><td>" .
+                        $row["phone"] . "</td><td>" .
+                        $row["address"] . "</td><td>" .
+                        $row["name"] . "</td>
+                    // <td> 
+                    //     <form action='customerupdate.php>\"' method=\"post\">
+                    //     <input type=\"hidden\" name=\"a\" value=\"2\">
+                    //     <input type=\"submit\" name=\"submit\" value=\"Delete\">
+                    //     </form>
+                    // </td>
+                    </tr>";
+                }
+            } else {
+                echo "0 results";
+            }
+            $con->close();
+            ?>
+        </table><br>
+        <button class="w3-button w3-dark-grey" onClick='location.href="customerupdate.php"'>Update Customers  <i class="fa fa-arrow-right"></i></button>
     </div>
     <hr>
 
