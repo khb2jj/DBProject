@@ -18,7 +18,7 @@ else {
     </div>
 
     <div class="w3-container">
-        <button class=" w3-button w3-dark-grey" onClick='location.href="customerupdate.php"'>Insert Customers  <i class="fa fa-arrow-right"></i></button>
+        <button class=" w3-button w3-dark-grey" onClick='location.href="addCustomer.php"'>Insert Customers  <i class="fa fa-arrow-right"></i></button>
         <input class="contentcontainer med left" style="float: right" type="text" id="myInput" onkeyup="filterTable()" placeholder="Search...">
 
         <br></br>
