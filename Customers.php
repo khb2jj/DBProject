@@ -42,11 +42,13 @@ else {
                 customerDelete($a);
                 $status = "New Record Deleted Successfully.";
                 echo "<script> window.location.assign('Customers.php'); </script>";
+                $con->close();
             }
 
             if (isset($_POST['button2'])) {
                 $a = $_REQUEST['a'];
                 echo "<script> window.location.assign('editCustomer.php?edit=" . $a . "'); </script>";
+                $con->close();
             }
 
             if ($result->num_rows > 0) {

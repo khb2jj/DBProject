@@ -18,7 +18,7 @@ else {
     </div>
 
     <div class="w3-container">
-        <button class=" w3-button w3-dark-grey" onClick='location.href="customerupdate.php"'>Insert Repairs  <i class="fa fa-arrow-right"></i></button>
+        <button class=" w3-button w3-dark-grey" onClick='location.href="addRepairs.php"'>Insert Repairs  <i class="fa fa-arrow-right"></i></button>
         <input class="contentcontainer med left" style="float: right" type="text" id="myInput" onkeyup="filterTable()" placeholder="Search...">
 
         <br></br>
@@ -32,21 +32,23 @@ else {
             </tr>
             <?php
             include('backend/db.php');
-            include('backend/customers.php');
-            $sql = "SELECT * FROM customers";
+            include('backend/repairs.php');
+            $sql = "SELECT * FROM repairs";
             $result = $con->query($sql);
 
             if (isset($_POST['button1'])) {
                 $a = $_REQUEST['a'];
 
-                customerDelete($a);
+                repairsDelete($a);
                 $status = "New Record Deleted Successfully.";
-                echo "<script> window.location.assign('Customers.php'); </script>";
+                echo "<script> window.location.assign('Repairs.php'); </script>";
+                $con->close();
             }
 
             if (isset($_POST['button2'])) {
                 $a = $_REQUEST['a'];
-                echo "<script> window.location.assign('editCustomer.php?edit=" . $a . "'); </script>";
+                echo "<script> window.location.assign('editRepairs.php?edit=" . $a . "'); </script>";
+                $con->close();
             }
 
             if ($result->num_rows > 0) {
@@ -54,21 +56,21 @@ else {
                 while ($row = $result->fetch_assoc()) {
             ?>
                     <tr>
+                        <td> <?php echo $row["repairID"]; ?> </td>
                         <td> <?php echo $row["customerID"]; ?> </td>
-                        <td> <?php echo $row["email"]; ?> </td>
-                        <td> <?php echo $row["phone"]; ?> </td>
-                        <td> <?php echo $row["address"]; ?> </td>
-                        <td> <?php echo $row["name"]; ?> </td>
+                        <td> <?php echo $row["employeeID"]; ?> </td>
+                        <td> <?php echo $row["repair_description"]; ?> </td>
+                        <td> <?php echo $row["repair_date"]; ?> </td>
                         <td>
                             <form method="POST">
                                 <input type="submit" name="button2" value="Edit" />
-                                <p><input type="hidden" name="a" value="<?php echo $row["customerID"]; ?>" /></p>
+                                <p><input type="hidden" name="a" value="<?php echo $row["repairID"]; ?>" /></p>
                             </form>
                         </td>
                         <td>
                             <form method="post">
                                 <input type="submit" name="button1" value="Delete" />
-                                <p><input type="hidden" name="a" value="<?php echo $row["customerID"]; ?>" /></p>
+                                <p><input type="hidden" name="a" value="<?php echo $row["repairID"]; ?>" /></p>
                             </form>
                         </td>
                     </tr>

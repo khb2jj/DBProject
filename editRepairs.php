@@ -21,42 +21,39 @@ else {
         $e = $_REQUEST['e'];
 
         $sql = "UPDATE customers
-        SET email='$b', phone='$c', address='$d', name='$e'
-        WHERE customerID='$a'";
+        SET customerID='$b', employeeID='$c', repair_description='$d', repair_date='$e'
+        WHERE repairID='$a'";
 
         if (!mysqli_query($con, $sql)) {
             die('Error: ' . mysqli_error($con));
         }
         $status = "New Record Updated Successfully.";
-        echo "<script> window.location.assign('Customers.php'); </script>";
+        echo "<script> window.location.assign('Repairs.php'); </script>";
         $con->close();
     }
 
     $id = intval($_GET['edit']);
     $id = $_GET['edit'];
-    $sql = "SELECT customerID, email, phone, address, name FROM customers WHERE customerID = '$id'";
+    $sql = "SELECT customerID, employeeID, repair_description, repair_date FROM repairs WHERE repairID='$id'";
 
     if (!mysqli_query($con, $sql)) {
         die('Error: ' . mysqli_error($con));
     }
 
-    $customerID = mysqli_query($con, "SELECT customerID FROM customers WHERE customerID = '$id'");
-    $row = mysqli_fetch_array($customerID);
-
-    $email = mysqli_query($con, "SELECT email FROM customers WHERE customerID = '$id'");
-    $row1 = mysqli_fetch_array($email);
-    $phone = mysqli_query($con, "SELECT phone FROM customers WHERE customerID = '$id'");
-    $row2 = mysqli_fetch_array($phone);
-    $address = mysqli_query($con, "SELECT address FROM customers WHERE customerID = '$id'");
-    $row3 = mysqli_fetch_array($address);
-    $name = mysqli_query($con, "SELECT name FROM customers WHERE customerID = '$id'");
-    $row4 = mysqli_fetch_array($name);
+    $customerID = mysqli_query($con, "SELECT customerID FROM repairs WHERE repairID='$id'");
+    $row1 = mysqli_fetch_array($customerID);
+    $employeeID = mysqli_query($con, "SELECT employeeID FROM repairs WHERE repairID='$id'");
+    $row2 = mysqli_fetch_array($employeeID);
+    $repair_description = mysqli_query($con, "SELECT repair_description FROM repairs WHERE repairID='$id'");
+    $row3 = mysqli_fetch_array($repair_description);
+    $repair_date = mysqli_query($con, "SELECT repair_date FROM repairs WHERE repairID='$id'");
+    $row4 = mysqli_fetch_array($repair_date);
     $con->close();
 ?>
 
     <head>
         <meta charset="utf-8">
-        <title>Insert New Customer </title>
+        <title>Insert New Repair </title>
         <link rel="stylesheet" href="css/style.css" />
     </head>
 
@@ -65,11 +62,11 @@ else {
             <h1>Insert New Record</h1>
             <form name="form" method="post" action="">
                 <input type="hidden" name="new" value="1" />
-                <p><input type="text" name="a" value="<?php echo $row['customerID'] ?>" readonly /></p>
-                <p><input type="text" name="b" value="<?php echo $row1['email'] ?>" required /></p>
-                <p><input type="text" name="c" value="<?php echo $row2['phone'] ?>" required /></p>
-                <p><input type="text" name="d" value="<?php echo $row3['address'] ?>" required /></p>
-                <p><input type="text" name="e" value="<?php echo $row4['name'] ?>" required /></p>
+                <p><input type="text" name="a" value="<?php echo $id ?>" readonly /></p>
+                <p><input type="text" name="b" value="<?php echo $row1['customerID'] ?>" required /></p>
+                <p><input type="text" name="c" value="<?php echo $row2['employeeID'] ?>" required /></p>
+                <p><input type="text" name="d" value="<?php echo $row3['repair_description'] ?>" required /></p>
+                <p><input type="text" name="e" value="<?php echo $row4['repair_date'] ?>" required /></p>
 
                 <p><input name="submit" type="submit" value="Submit" /></p>
                 <p style="color:#FF0000;"><?php echo $status; ?></p>
