@@ -19,14 +19,16 @@ else {
 
     <div class="w3-container">
         <button class=" w3-button w3-dark-grey" onClick='location.href="customerupdate.php"'>Insert Customers  <i class="fa fa-arrow-right"></i></button>
+        <input class="contentcontainer med left" style="float: right" type="text" id="myInput" onkeyup="filterTable()" placeholder="Search...">
+
         <br></br>
-        <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
+        <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white" id="myTable">
             <tr>
-                <td>Customer ID</td>
-                <td>Email</td>
-                <td>Phone</td>
-                <td>Address</td>
-                <td>Name</td>
+                <th>Customer ID</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Name</th>
             </tr>
             <?php
             include('backend/db.php');
@@ -44,7 +46,7 @@ else {
 
             if (isset($_POST['button2'])) {
                 $a = $_REQUEST['a'];
-                echo "<script> window.location.assign('editCustomer.php?edit=".$a."'); </script>";
+                echo "<script> window.location.assign('editCustomer.php?edit=" . $a . "'); </script>";
             }
 
             if ($result->num_rows > 0) {
@@ -82,6 +84,7 @@ else {
     </div>
 
 <?php } // close out else tag 
+
 ?>
 
 <script>
@@ -106,6 +109,37 @@ else {
     function w3_close() {
         mySidebar.style.display = "none";
         overlayBg.style.display = "none";
+    }
+
+    function filterTable() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 1; i < tr.length; i++) {
+            tr[i].style.display = "none";
+            td = tr[i].getElementsByTagName("td");
+            for (var j = 0; j < td.length; j++) {
+                cell = tr[i].getElementsByTagName("td")[j];
+                if (cell) {
+                    if (cell.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                        break;
+                    }
+                }
+            }
+        }
+
+        // for (var i = 0; i < tr.length; i++) {
+        //     var firstCol = tds[0].textContent.toUpperCase();
+        //     var secondCol = tds[1].textContent.toUpperCase();
+        //     if (firstCol.indexOf(filter) > -1 || secondCol.indexOf(filter) > -1) {
+        //         tr[i].style.display = "";
+        //     } else {
+        //         tr[i].style.display = "none";
+        //     }      
+        // }
     }
 </script>
 </body>
