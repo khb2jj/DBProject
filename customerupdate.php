@@ -1,63 +1,82 @@
+<!DOCTYPE html>
+<html>
 <?php
-require('backend/db.php');
-require('backend/customers.php');
-$status = "";
-if (isset($_POST['new']) && $_POST['new'] == 1) {
-    $a = $_REQUEST['a'];
-    $b = $_REQUEST['b'];
-    $c = $_REQUEST['c'];
-    $d = $_REQUEST['d'];
-    $e = $_REQUEST['e'];
+// header begins body tag
+include('Header.php');
+echo "<br> <br> <br> <br>";
 
-    customerInsert($a, $b, $c, $d, $e);
-
-    $status = "New Record Inserted Successfully.";
-    echo "<script> window.location.assign('index.php'); </script>";
+// make the user login first 
+if (!isset($_SESSION['user'])) {
+    header('location: Home.php');
 }
+// if the user is logged in, display the home page content
+else {
+?>
 
-if (isset($_POST['new']) && $_POST['new'] == 2) {
-    $a = $_REQUEST['a'];
+<?php
+    require('backend/db.php');
+    require('backend/customers.php');
+    $status = "";
+    if (isset($_POST['new']) && $_POST['new'] == 1) {
+        $a = $_REQUEST['a'];
+        $b = $_REQUEST['b'];
+        $c = $_REQUEST['c'];
+        $d = $_REQUEST['d'];
+        $e = $_REQUEST['e'];
 
-    customerDelete($a);
-    $status = "Record Deleted Successfully.
-    </br></br><a href='view.php'>View Inserted Record</a>";
+        customerInsert($a, $b, $c, $d, $e);
+
+        $status = "New Record Inserted Successfully.";
+        echo "<script> window.location.assign('Customers.php'); </script>";
+    }
 }
 ?>
 
-<!DOCTYPE html>
-<html>
-
 <head>
     <meta charset="utf-8">
-    <title>Insert New Record</title>
+    <title>Insert New Customer </title>
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
     <div class="form">
-        <p><a href="dashboard.php">Dashboard</a>
-            | <a href="view.php">View Records</a>
-            | <a href="logout.php">Logout</a></p>
-        <div>
-            <h1>Insert New Record</h1>
-            <form name="form" method="post" action="">
-                <input type="hidden" name="new" value="1" />
-                <p><input type="text" name="a" placeholder="Customer ID" required /></p>
-                <p><input type="text" name="b" placeholder="Email" required /></p>
-                <p><input type="text" name="c" placeholder="Phone" required /></p>
-                <p><input type="text" name="d" placeholder="Address" required /></p>
-                <p><input type="text" name="e" placeholder="name" required /></p>
+        <h1>Insert New Record</h1>
+        <form name="form" method="post" action="">
+            <input type="hidden" name="new" value="1" />
+            <p><input type="text" name="a" placeholder="Customer ID" required /></p>
+            <p><input type="text" name="b" placeholder="Email" required /></p>
+            <p><input type="text" name="c" placeholder="Phone" required /></p>
+            <p><input type="text" name="d" placeholder="Address" required /></p>
+            <p><input type="text" name="e" placeholder="Name" required /></p>
 
-                <p><input name="submit" type="submit" value="Submit" /></p>
-            </form>
-            <form name="form" method="post" action="">
-                <input type="hidden" name="new" value="2" />
-                <p><input type="text" name="a" placeholder="Customer ID" required /></p>
-                <p><input name="submit" type="submit" value="Submit" /></p>
-            </form>
+            <p><input name="submit" type="submit" value="Submit" /></p>
             <p style="color:#FF0000;"><?php echo $status; ?></p>
-        </div>
     </div>
+    </div>
+    <script>
+        // Get the Sidebar
+        var mySidebar = document.getElementById("mySidebar");
+
+        // Get the DIV with overlay effect
+        var overlayBg = document.getElementById("myOverlay");
+
+        // Toggle between showing and hiding the sidebar, and add overlay effect
+        function w3_open() {
+            if (mySidebar.style.display === 'block') {
+                mySidebar.style.display = 'none';
+                overlayBg.style.display = "none";
+            } else {
+                mySidebar.style.display = 'block';
+                overlayBg.style.display = "block";
+            }
+        }
+
+        // Close the sidebar with the close button
+        function w3_close() {
+            mySidebar.style.display = "none";
+            overlayBg.style.display = "none";
+        }
+    </script>
 </body>
 
 </html>
