@@ -20,7 +20,7 @@ else {
         $d = $_REQUEST['d'];
         $e = $_REQUEST['e'];
 
-        $sql = "UPDATE customers
+        $sql = "UPDATE repairs
         SET customerID='$b', employeeID='$c', repair_description='$d', repair_date='$e'
         WHERE repairID='$a'";
 
@@ -34,7 +34,7 @@ else {
 
     $id = intval($_GET['edit']);
     $id = $_GET['edit'];
-    $sql = "SELECT customerID, employeeID, repair_description, repair_date FROM repairs WHERE repairID='$id'";
+    $sql = "SELECT repairID, customerID, employeeID, repair_description, repair_date FROM repairs WHERE repairID='$id'";
 
     if (!mysqli_query($con, $sql)) {
         die('Error: ' . mysqli_error($con));
