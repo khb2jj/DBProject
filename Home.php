@@ -65,7 +65,8 @@
     ?>
     
     <div class="container" style="text-align:center">
-        <h1> Home page </h1>
+    <img src="images/tlogo.png" style="width:500px" class="center">
+        <h1> Welcome! </h1>
     </div>
 
     <?php } // close out else tag ?>
