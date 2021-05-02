@@ -17,6 +17,74 @@
         <h1> Inventory page </h1>
     </div>
 
+    <div class="w3-container">
+        <button class=" w3-button w3-dark-grey" onClick='location.href="addInventory.php"'>Insert Inventory  <i class="fa fa-arrow-right"></i></button>
+        <input class="contentcontainer med left" style="float: right" type="text" id="myInput" onkeyup="filterTable()" placeholder="Search...">
+
+        <br></br>
+        <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white" id="myTable">
+            <tr>
+                <th>Product ID</th>
+                <th>Brand Name</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Manufacturer ID</th>
+            </tr>
+            <?php
+            include('backend/db.php');
+            include('backend/inventory.php');
+            $sql = "SELECT * FROM inventory";
+            $result = $con->query($sql);
+
+            if (isset($_POST['button1'])) {
+                $a = $_REQUEST['a'];
+
+                inventoryDelete($a);
+                $status = "New Record Deleted Successfully.";
+                echo "<script> window.location.assign('Inventory.php'); </script>";
+                $con->close();
+            }
+
+            if (isset($_POST['button2'])) {
+                $a = $_REQUEST['a'];
+                echo "<script> window.location.assign('editInventory.php?edit=" . $a . "'); </script>";
+                $con->close();
+            }
+
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while ($row = $result->fetch_assoc()) {
+            ?>
+                    <tr>
+                        <td> <?php echo $row["productID"]; ?> </td>
+                        <td> <?php echo $row["brand_name"]; ?> </td>
+                        <td> <?php echo $row["product_name"]; ?> </td>
+                        <td> <?php echo $row["price"]; ?> </td>
+                        <td> <?php echo $row["manufacturerID"]; ?> </td>
+                        <td>
+                            <form method="POST">
+                                <input type="submit" name="button2" value="Edit" />
+                                <p><input type="hidden" name="a" value="<?php echo $row["productID"]; ?>" /></p>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="post">
+                                <input type="submit" name="button1" value="Delete" />
+                                <p><input type="hidden" name="a" value="<?php echo $row["productID"]; ?>" /></p>
+                            </form>
+                        </td>
+                    </tr>
+            <?php
+                }
+            } else {
+                echo "0 results";
+            }
+            $con->close();
+            ?>
+        </table><br>
+
+    </div>
+
     <?php } // close out else tag ?>
     
     <script>
