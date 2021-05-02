@@ -3,7 +3,7 @@
     <?php
         // header begins body tag
         include('Header.php');
-        echo "<br> <br> <br> <br>";
+        echo "<br>";
         
         // make the user login first 
         if(!isset($_SESSION['user'])) {
@@ -18,8 +18,8 @@
         <h1> Stores </h1>
     </div>
     <div class="w3-container">
-        <button class=" w3-button w3-dark-grey" onClick='location.href="addStores.php"'>Insert Stores  <i class="fa fa-arrow-right"></i></button>
-        <input class="contentcontainer med left" style="float: right" type="text" id="myInput" onkeyup="filterTable()" placeholder="Search...">
+        <button style="font-size: 20px; background-color:yellow; border: solid 2px; border-radius: 5px;" onClick='location.href="addStores.php"'>Insert Stores  <i class="fa fa-arrow-right"></i></button>
+        <input class="contentcontainer med left" style="font-size: 20px; float: right; border: solid 2px; border-radius: 5px;" type="text" id="myInput" onkeyup="filterTable()" placeholder="Search...">
 
         <br></br>
         <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white" id="myTable">
@@ -27,6 +27,8 @@
                 <th>Store ID</th>
                 <th>Store Address</th>
                 <th>Manager ID</th>
+                <th></th>
+                <th></th>
             </tr>
             <?php
             include('backend/db.php');
@@ -83,8 +85,8 @@
         <h1> Manufacturers </h1>
     </div>
     <div class="w3-container">
-        <button class=" w3-button w3-dark-grey" onClick='location.href="addManufacturers.php"'>Insert Manufacturers  <i class="fa fa-arrow-right"></i></button>
-        <input class="contentcontainer med left" style="float: right" type="text" id="myInput" onkeyup="filterTable()" placeholder="Search...">
+        <button style="font-size: 20px; background-color:yellow; border: solid 2px; border-radius: 5px;" onClick='location.href="addManufacturers.php"'>Insert Manufacturers  <i class="fa fa-arrow-right"></i></button>
+        <input class="contentcontainer med left" style="font-size: 20px; float: right; border: solid 2px; border-radius: 5px;" type="text" id="myInput" onkeyup="filterTable()" placeholder="Search...">
 
         <br></br>
         <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white" id="myTable">
@@ -92,6 +94,8 @@
                 <th>Manufacturer ID</th>
                 <th>Manufacturer Name</th>
                 <th>Manufacturer Phone</th>
+                <th></th>
+                <th></th>
             </tr>
             <?php
             include('backend/db.php');
