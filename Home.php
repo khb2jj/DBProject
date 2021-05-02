@@ -5,10 +5,30 @@
 
     // need some actual authentication code here that looks in the database and verifies that the user exists
     function authenticate() {
-        session_start();
-        $_SESSION['user'] = $_POST['username'];
-        $_SESSION['pwd'] = $_POST['password'];  // in reality, don't save password directly, hash instead
-        header("Location: Home.php");
+        require_once('./backend/library-user-a.php');
+        $db_connection = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
+
+        if(mysqli_connect_errno()) {
+            echo("Can't connect to MySQL Server. Error code: " . mysqli_connect_error());
+            return null;
+        }
+
+        $username = $_POST['username'];
+        $result = mysqli_query($db_connection, "SELECT * FROM employees WHERE username = '$username'");
+        $row = mysqli_fetch_array($result);
+        
+        mysqli_close($db_connection);
+
+        // if there is no user with this username, alert
+        if($row['username'] == $_POST['username'] && $row['password'] == $_POST['password']) {
+            session_start();
+            $_SESSION['user'] = $_POST['username'];
+            $_SESSION['pwd'] = $_POST['password'];  // in reality, don't save password directly, hash instead
+            header("Location: Home.php");
+        } 
+        else { 
+            echo "<script> alert('Username and/or password do not match our record'); </script>";
+        }
     }
 ?>
 
