@@ -66,7 +66,7 @@
     
     <div class="container" style="text-align:center">
     <img src="images/tlogo.png" style="width:500px" class="center">
-        <h1> Welcome! </h1>
+        <h1> Welcome <?php if(isset($_SESSION['user'])) echo $_SESSION['user'] . "!"?> </h1>
     </div>
 
     <?php } // close out else tag ?>
