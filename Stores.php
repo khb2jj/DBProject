@@ -37,7 +37,7 @@
             if (isset($_POST['button1'])) {
                 $a = $_REQUEST['a'];
 
-                repairsDelete($a);
+                storesDelete($a);
                 $status = "New Record Deleted Successfully.";
                 echo "<script> window.location.assign('Stores.php'); </script>";
                 $con->close();
@@ -99,16 +99,16 @@
             $sql = "SELECT * FROM manufacturers";
             $result = $con->query($sql);
 
-            if (isset($_POST['button1'])) {
+            if (isset($_POST['button3'])) {
                 $a = $_REQUEST['a'];
 
-                repairsDelete($a);
+                storesDelete($a);
                 $status = "New Record Deleted Successfully.";
                 echo "<script> window.location.assign('Stores.php'); </script>";
                 $con->close();
             }
 
-            if (isset($_POST['button2'])) {
+            if (isset($_POST['button4'])) {
                 $a = $_REQUEST['a'];
                 echo "<script> window.location.assign('editManufacturers.php?edit=" . $a . "'); </script>";
                 $con->close();
@@ -124,13 +124,13 @@
                         <td> <?php echo $row["phone"]; ?> </td>
                         <td>
                             <form method="POST">
-                                <input type="submit" name="button2" value="Edit" />
+                                <input type="submit" name="button4" value="Edit" />
                                 <p><input type="hidden" name="a" value="<?php echo $row["manufacturerID"]; ?>" /></p>
                             </form>
                         </td>
                         <td>
                             <form method="post">
-                                <input type="submit" name="button1" value="Delete" />
+                                <input type="submit" name="button3" value="Delete" />
                                 <p><input type="hidden" name="a" value="<?php echo $row["manufacturerID"]; ?>" /></p>
                             </form>
                         </td>
