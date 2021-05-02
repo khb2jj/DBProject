@@ -102,7 +102,7 @@
             if (isset($_POST['button3'])) {
                 $a = $_REQUEST['a'];
 
-                storesDelete($a);
+                manufacturersDelete($a);
                 $status = "New Record Deleted Successfully.";
                 echo "<script> window.location.assign('Stores.php'); </script>";
                 $con->close();
