@@ -51,14 +51,14 @@
         <div class="row">
             <div class="col-md-3">
                 <form action="InsertEmployee.php" method="get">
-                    <input type="submit" style="background-color:yellow; border: solid 2px; border-radius: 5px;" value="Insert New Employee"/>
+                    <input type="submit" style="font-size: 20px; background-color:yellow; border: solid 2px; border-radius: 5px;" value="Insert New Employee"/>
                 </form>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <form action="Employees.php" method="post">
-                    <label for="store_id"> Search employees by store number: </label>
-                    <input type="text" name="store_id" placeholder="Store Number">
-                    <input type="submit" style="background-color:yellow; border: solid 2px; border-radius: 5px;" value="Go">
+                    <label style="font-size: 20px;" for="store_id"> Search employees by store number: </label>
+                    <input style="font-size: 20px;" type="text" name="store_id" placeholder="Store Number">
+                    <input  type="submit" style="background-color:yellow; border: solid 2px; border-radius: 5px; font-size:20px" value="Go">
                 </form>
             </div>
         </div>
