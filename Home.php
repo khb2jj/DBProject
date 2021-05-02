@@ -5,8 +5,7 @@
 
     // need some actual authentication code here that looks in the database and verifies that the user exists
     function authenticate() {
-        require_once('./backend/library.php');
-        $db_connection = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
+        $db_connection = new mysqli('usersrv01.cs.virginia.edu', 'khb2jj', 'ProjectGroup2021!', 'khb2jj');
 
         if(mysqli_connect_errno()) {
             echo("Can't connect to MySQL Server. Error code: " . mysqli_connect_error());
