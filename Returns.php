@@ -13,7 +13,6 @@
         else {
     ?>
     
-    <!-- PUT PAGE CONTENT HERE -->
     <div class="container" style="text-align:center">
         <h1> Returns page </h1>
     </div>
