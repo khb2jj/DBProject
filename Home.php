@@ -5,7 +5,7 @@
 
     // need some actual authentication code here that looks in the database and verifies that the user exists
     function authenticate() {
-        require_once('./backend/library-user-a.php');
+        require_once('./backend/library.php');
         $db_connection = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
 
         if(mysqli_connect_errno()) {
