@@ -2,7 +2,7 @@
 <html>
 <?php
 include('header.php');
-echo "<br> <br> <br> <br>";
+echo "<br>";
 
 // make the user login first 
 if (!isset($_SESSION['user'])) {
@@ -47,27 +47,32 @@ else {
     $row3 = mysqli_fetch_array($date);
     $con->close();
 ?>
-
-    <head>
-        <meta charset="utf-8">
-        <title>Insert New Purchase </title>
-        <link rel="stylesheet" href="css/style.css" />
-    </head>
-
-    <body>
-        <div class="form">
-            <h1>Insert New Record</h1>
+        <div class="container" style="text-align:center">
+            <h1>Edit Purchase Record</h1>
             <form name="form" method="post" action="">
                 <input type="hidden" name="new" value="1" />
-                <p>Purchase ID: <input type="text" name="a" value="<?php echo $id ?>" readonly /></p>
-                <p>Customer ID: <input type="text" name="b" value="<?php echo $row1['customerID'] ?>" required /></p>
-                <p>Product ID: <input type="text" name="c" value="<?php echo $row2['productID'] ?>" required /></p>
-                <p>Date: <input type="text" name="d" value="<?php echo $row3['date'] ?>" required /></p>
-
-                <p><input name="submit" type="submit" value="Submit" /></p>
+                <div class="form-group">
+                    <label style="font-size:20px" for="a">Purchase ID: </label>
+                    <input style="font-size:20px" type="number" name="a" value="<?php echo $id ?>" readonly />
+                </div>
+                <div class="form-group">
+                    <label style="font-size:20px" for="b">Customer ID: </label>
+                    <input style="font-size:20px" type="number" name="b" value="<?php echo $row1['customerID'] ?>" required />
+                </div>
+                <div class="form-group">
+                    <label style="font-size:20px" for="c">Product ID: </label>
+                    <input style="font-size:20px" type="number" name="c" value="<?php echo $row2['productID'] ?>" required />
+                </div>
+                <div class="form-group">
+                    <label style="font-size:20px" for="d">Purchase Date: </label>
+                    <input style="font-size:20px" type="text" name="d" value="<?php echo $row3['date'] ?>" required />
+                </div>
+                
+                <p><input style="background-color:yellow; font-size:20px; border: black solid 2px; border-radius:5px; color:black" name="submit" type="submit" value="Submit" /></p>
                 <p style="color:#FF0000;"><?php echo $status; ?></p>
+            </form>
         </div>
-        </div>
+        
         <script>
             // Get the Sidebar
             var mySidebar = document.getElementById("mySidebar");

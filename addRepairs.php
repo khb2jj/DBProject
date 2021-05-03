@@ -3,7 +3,7 @@
 <?php
 // header begins body tag
 include('Header.php');
-echo "<br> <br> <br> <br>";
+echo "<br>";
 
 // make the user login first 
 if (!isset($_SESSION['user'])) {
@@ -32,28 +32,37 @@ else {
     }
 }
 ?>
-
-<head>
-    <meta charset="utf-8">
-    <title>Insert New Repair </title>
-    <link rel="stylesheet" href="css/style.css" />
-</head>
-
-<body>
-    <div class="form">
-        <h1>Insert New Record</h1>
+    <div class="container" style="text-align:center">
+        <h1>New Repair</h1>
         <form name="form" method="post" action="">
             <input type="hidden" name="new" value="1" />
-            <p><input type="text" name="a" placeholder="Repair ID" required /></p>
-            <p><input type="text" name="b" placeholder="Customer ID" required /></p>
-            <p><input type="text" name="c" placeholder="Employee ID" required /></p>
-            <p><input type="text" name="d" placeholder="Repair Description" required /></p>
-            <p><input type="text" name="e" placeholder="Repair Date" required /></p>
-
-            <p><input name="submit" type="submit" value="Submit" /></p>
+            <div class="form-group">
+                <label style="font-size:20px" for="a">Repair ID: </label>
+                <input style="font-size:20px" type="number" name="a" placeholder="Repair ID" required />
+            </div>
+            <div class="form-group">
+                <label style="font-size:20px" for="b">Customer ID: </label>
+                <input style="font-size:20px" type="number" name="b" placeholder="Customer ID" required />
+            </div>
+            <div class="form-group">
+                <label style="font-size:20px" for="c">Employee ID: </label>
+                <input style="font-size:20px" type="number" name="c" placeholder="Employee ID" required />
+            </div>
+            <div class="form-group">
+                <label style="font-size:20px" for="d">Repair Description: </label>
+                <input style="font-size:20px" type="text" name="d" size="50" placeholder="Repair Description" required />
+            </div>
+            <div class="form-group">
+                <label style="font-size:20px" for="e">Repair Date: </label>
+                <input style="font-size:20px" type="text" name="e"  placeholder="Repair Date" required />
+            </div>
+            
+            
+            <p><input style="background-color:yellow; font-size:20px; border: black solid 2px; border-radius:5px; color:black" name="submit" type="submit" value="Submit" /></p>
             <p style="color:#FF0000;"><?php echo $status; ?></p>
+        </form>
     </div>
-    </div>
+    
     <script>
         // Get the Sidebar
         var mySidebar = document.getElementById("mySidebar");

@@ -3,7 +3,7 @@
 <?php
 // header begins body tag
 include('Header.php');
-echo "<br> <br> <br> <br>";
+echo "<br>";
 
 // make the user login first 
 if (!isset($_SESSION['user'])) {
@@ -31,27 +31,32 @@ else {
     }
 }
 ?>
-
-<head>
-    <meta charset="utf-8">
-    <title>Insert New Reward </title>
-    <link rel="stylesheet" href="css/style.css" />
-</head>
-
-<body>
-    <div class="form">
-        <h1>Insert New Record</h1>
+    <div class="container" style="text-align:center">
+        <h1>New Reward</h1>
         <form name="form" method="post" action="">
             <input type="hidden" name="new" value="1" />
-            <p><input type="text" name="a" placeholder="Reward ID" required /></p>
-            <p><input type="text" name="b" placeholder="Customer ID" required /></p>
-            <p><input type="text" name="c" placeholder="Rewards Available" required /></p>
-            <p><input type="text" name="d" placeholder="Reward Expiration Date" required /></p>
-
-            <p><input name="submit" type="submit" value="Submit" /></p>
+            <div class="form-group">
+                <label style="font-size:20px" for="a">Reward ID: </label>
+                <input style="font-size:20px" type="number" name="a" placeholder="Reward ID" required />
+            </div>
+            <div class="form-group">
+                <label style="font-size:20px" for="b">Customer ID: </label>
+                <input style="font-size:20px" type="number" name="b" placeholder="Customer ID" required />
+            </div>
+            <div class="form-group">
+                <label style="font-size:20px" for="c">Reward Available: </label>
+                <input style="font-size:20px" type="text" name="c" placeholder="Reward Available" required />
+            </div>
+            <div class="form-group">
+                <label style="font-size:20px" for="d">Reward Expiration Date: </label>
+                <input style="font-size:20px" type="text" name="d" placeholder="Reward Expiration Date" required />
+            </div>
+            
+            <p><input style="background-color:yellow; font-size:20px; border: black solid 2px; border-radius:5px; color:black" name="submit" type="submit" value="Submit" /></p>
             <p style="color:#FF0000;"><?php echo $status; ?></p>
+        </form>
     </div>
-    </div>
+    
     <script>
         // Get the Sidebar
         var mySidebar = document.getElementById("mySidebar");

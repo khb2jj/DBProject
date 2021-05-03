@@ -3,7 +3,7 @@
 <?php
 // header begins body tag
 include('Header.php');
-echo "<br> <br> <br> <br>";
+echo "<br>";
 
 // make the user login first 
 if (!isset($_SESSION['user'])) {
@@ -33,27 +33,48 @@ else {
 }
 ?>
 
-<head>
-    <meta charset="utf-8">
-    <title>Insert New Inventory </title>
-    <link rel="stylesheet" href="css/style.css" />
-</head>
-
-<body>
-    <div class="form">
-        <h1>Insert New Record</h1>
+    <div class="container" style="text-align:center">
+        <h1>New Inventory Item</h1>
         <form name="form" method="post" action="">
             <input type="hidden" name="new" value="1" />
-            <p><input type="text" name="a" placeholder="Product ID" required /></p>
-            <p><input type="text" name="b" placeholder="Brand Name" required /></p>
-            <p><input type="text" name="c" placeholder="Product Name" required /></p>
-            <p><input type="text" name="d" placeholder="Price" required /></p>
-            <p><input type="text" name="e" placeholder="Manufacturer Id" required /></p>
+            <div class="form-group">
+                <label style="font-size:20px" for="a">Product ID: </label>
+                <input style="font-size:20px" type="number" name="a" placeholder="Product ID" required />
+            </div>
+            <div class="form-group">
+                <label style="font-size:20px" for="b">Brand Name: </label>
+                <input style="font-size:20px" type="text" name="b" placeholder="Brand Name" required />
+            </div>
+            <div class="form-group">
+                <label style="font-size:20px" for="c">Product Name: </label>
+                <input style="font-size:20px" type="text" name="c" placeholder="Product Name" required />
+            </div>
+            <div class="form-group">
+                <label style="font-size:20px" for="d">Price: </label>
+                <input style="font-size:20px" type="text" name="d" placeholder="Price" required />
+            </div>
+            <div class="form-group">
+                <label style="font-size:20px" for="e">Manufacturer ID: </label>
+                <input style="font-size:20px" type="number" name="e" placeholder="Manufacturer ID" required />
+            </div>
+            <div class="form-group">
+                <label style="font-size:20px" for="f">Store ID: </label>
+                <input style="font-size:20px;" type="number" name="f" placeholder="Store ID" readonly />
+            </div>
+            <div class="form-group">
+                <label style="font-size:20px" for="g">Store Location: </label>
+                <input style="font-size:20px;" type="text" name="g" placeholder="Store Location" readonly />
+            </div>
+            <div class="form-group">
+                <label style="font-size:20px" for="h">Quantity: </label>
+                <input style="font-size:20px;" type="number" name="h" placeholder="Quantity" required />
+            </div>
 
-            <p><input name="submit" type="submit" value="Submit" /></p>
+            <p><input style="background-color:yellow; font-size:20px; border: black solid 2px; border-radius:5px; color:black" name="submit" type="submit" value="Submit" /></p>
             <p style="color:#FF0000;"><?php echo $status; ?></p>
+        </form>
     </div>
-    </div>
+    
     <script>
         // Get the Sidebar
         var mySidebar = document.getElementById("mySidebar");
