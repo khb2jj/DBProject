@@ -22,9 +22,16 @@
             $is_manager = 0;
         }
 
-        $result = mysqli_query($db_connection, "INSERT INTO employees VALUES ('$empid','$username','$password','$name','$store','$phone','$wage','$is_manager')");
+        //$result = mysqli_query($db_connection, "INSERT INTO employees VALUES ('$empid','$username','$password','$name','$store','$phone','$wage','$is_manager')");
         
-        mysqli_close($db_connection);
+        $stmt = $db_connection->prepare("INSERT INTO employees VALUES
+                             (?,?,?,?,?,?,?,?)");
+        $stmt->bind_param("isssisdi", $empid, $username, $password, $name, $store, $phone, $wage, $is_manager);
+        $stmt->execute();
+
+        $stmt->close();
+
+        //mysqli_close($db_connection);
         header("Location: Employees.php");
     }
 ?>

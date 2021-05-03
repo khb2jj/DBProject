@@ -21,13 +21,24 @@
         else {
             $is_manager = 0;
         }
+        
+        $stmt = $db_connection->prepare("UPDATE employees 
+                                        SET username=?, password=?, name=?, 
+                                        store_id=?, phone=?, wage=?, is_manager=? 
+                                        WHERE em_id = ?");
+        $stmt->bind_param("sssisdii", $username, $password, $name, $store, $phone, $wage, $is_manager, $empid);
+        $stmt->execute();
 
+        $stmt->close();
+
+        /*
         $result = mysqli_query($db_connection, "UPDATE employees 
                 SET username='$username', password='$password', name='$name', 
                 store_id='$store', phone='$phone', wage='$wage', is_manager='$is_manager' 
                 WHERE em_id = '$empid'");
         
         mysqli_close($db_connection);
+        */
         header("Location: Employees.php");
     }
 ?>
