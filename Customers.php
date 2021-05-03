@@ -19,7 +19,10 @@ else {
 
     <div class="w3-container">
         <button style="font-size: 20px; background-color:yellow; border: solid 2px; border-radius: 5px;" onClick='location.href="addCustomer.php"'>Insert Customers  <i class="fa fa-arrow-right"></i></button>
-        <input class="contentcontainer med left" style="font-size: 20px; float: right; border: solid 2px; border-radius: 5px;" type="text" id="myInput" onkeyup="filterTable()" placeholder="Search...">
+        <div style="float:right">
+            <label style="font-size: 20px;" for="myInput">Search by Name, Email, Phone, Address</label>
+            <input class="contentcontainer med left" style="font-size: 20px; border: solid 2px; border-radius: 5px;" type="text" id="myInput" onkeyup="filterTable()" placeholder="Search...">
+        </div>
 
         <br></br>
         <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white" id="myTable">

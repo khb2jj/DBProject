@@ -19,8 +19,10 @@
 
     <div class="w3-container">
         <button style="font-size: 20px; background-color:yellow; border: solid 2px; border-radius: 5px;" onClick='location.href="addInventory.php"'>Insert Inventory  <i class="fa fa-arrow-right"></i></button>
-        <input class="contentcontainer med left" style="font-size: 20px; float: right; border: solid 2px; border-radius: 5px;" type="text" id="myInput" onkeyup="filterTable()" placeholder="Search...">
-
+        <div style="float:right">
+            <label style="font-size: 20px;" for="myInput">Search by Brand, Product, Price, Location</label>
+            <input class="contentcontainer med left" style="font-size: 20px; border: solid 2px; border-radius: 5px;" type="text" id="myInput" onkeyup="filterTable()" placeholder="Search...">
+        </div>
         <br></br>
         <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white" id="myTable">
             <tr>
@@ -133,6 +135,52 @@
             mySidebar.style.display = "none";
             overlayBg.style.display = "none";
         }
+        function w3_open() {
+        if (mySidebar.style.display === 'block') {
+            mySidebar.style.display = 'none';
+            overlayBg.style.display = "none";
+        } else {
+            mySidebar.style.display = 'block';
+            overlayBg.style.display = "block";
+        }
+    }
+
+    // Close the sidebar with the close button
+    function w3_close() {
+        mySidebar.style.display = "none";
+        overlayBg.style.display = "none";
+    }
+
+    function filterTable() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 1; i < tr.length; i++) {
+            tr[i].style.display = "none";
+            td = tr[i].getElementsByTagName("td");
+            for (var j = 0; j < td.length; j++) {
+                cell = tr[i].getElementsByTagName("td")[j];
+                if (cell) {
+                    if (cell.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                        break;
+                    }
+                }
+            }
+        }
+
+        // for (var i = 0; i < tr.length; i++) {
+        //     var firstCol = tds[0].textContent.toUpperCase();
+        //     var secondCol = tds[1].textContent.toUpperCase();
+        //     if (firstCol.indexOf(filter) > -1 || secondCol.indexOf(filter) > -1) {
+        //         tr[i].style.display = "";
+        //     } else {
+        //         tr[i].style.display = "none";
+        //     }      
+        // }
+    }
     </script>
     </body>
 </html>

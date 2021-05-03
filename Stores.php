@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html>
-    <?php
-        // header begins body tag
-        include('Header.php');
-        echo "<br>";
-        
-        // make the user login first 
-        if(!isset($_SESSION['user'])) {
-            header('location: Home.php');
-        }
-        // if the user is logged in, display the home page content
-        else {
-    ?>
-    
+<?php
+// header begins body tag
+include('Header.php');
+echo "<br>";
+
+// make the user login first 
+if (!isset($_SESSION['user'])) {
+    header('location: Home.php');
+}
+// if the user is logged in, display the home page content
+else {
+?>
+
     <!-- PUT PAGE CONTENT HERE -->
     <div class="container" style="text-align:center">
         <h1> Stores </h1>
     </div>
     <div class="w3-container">
         <button style="font-size: 20px; background-color:yellow; border: solid 2px; border-radius: 5px;" onClick='location.href="addStores.php"'>Insert Stores  <i class="fa fa-arrow-right"></i></button>
-        <input class="contentcontainer med left" style="font-size: 20px; float: right; border: solid 2px; border-radius: 5px;" type="text" id="myInput" onkeyup="filterTable()" placeholder="Search...">
-
+        <div style="float:right">
+            <label style="font-size: 20px;" for="myInput">Search Stores</label>
+            <input class="contentcontainer med left" style="font-size: 20px; border: solid 2px; border-radius: 5px;" type="text" id="myInput" onkeyup="filterTable()" placeholder="Search...">
+        </div>
         <br></br>
         <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white" id="myTable">
             <tr>
@@ -72,30 +74,30 @@
                             </form>
                         </td>
                     </tr>
-    <?php } // close out else tag 
-    } else {
-        echo "0 results";
-    }
-    $con->close();?>
-            </table><br>
+            <?php } // close out else tag 
+            } else {
+                echo "0 results";
+            }
+            $con->close(); ?>
+        </table><br>
 
-</div>
+    </div>
 
-<div class="container" style="text-align:center">
+    <div class="container" style="text-align:center">
         <h1> Manufacturers </h1>
     </div>
     <div class="w3-container">
         <button style="font-size: 20px; background-color:yellow; border: solid 2px; border-radius: 5px;" onClick='location.href="addManufacturers.php"'>Insert Manufacturers  <i class="fa fa-arrow-right"></i></button>
-        <input class="contentcontainer med left" style="font-size: 20px; float: right; border: solid 2px; border-radius: 5px;" type="text" id="myInput" onkeyup="filterTable()" placeholder="Search...">
-
+        <div style="float:right">
+            <label style="font-size: 20px;" for="myIn">Search Manufacturers</label>
+            <input class="contentcontainer med left" style="font-size: 20px; border: solid 2px; border-radius: 5px;" type="text" id="myIn" onkeyup="filterMan()" placeholder="Search...">
+        </div>
         <br></br>
-        <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white" id="myTable">
+        <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white" id="myTab">
             <tr>
                 <th>Manufacturer ID</th>
                 <th>Manufacturer Name</th>
                 <th>Manufacturer Phone</th>
-                <th></th>
-                <th></th>
             </tr>
             <?php
             include('backend/db.php');
@@ -139,44 +141,45 @@
                             </form>
                         </td>
                     </tr>
-    <?php } // close out else tag 
-    } else {
-        echo "0 results";
-    }
-    $con->close();?>
-            </table><br>
+            <?php } // close out else tag 
+            } else {
+                echo "0 results";
+            }
+            $con->close(); ?>
+        </table><br>
 
-</div>
+    </div>
 
 <?php } // close out else tag 
 
 ?>
 
-    
-    <script>
-        // Get the Sidebar
-        var mySidebar = document.getElementById("mySidebar");
 
-        // Get the DIV with overlay effect
-        var overlayBg = document.getElementById("myOverlay");
+<script>
+    // Get the Sidebar
+    var mySidebar = document.getElementById("mySidebar");
 
-        // Toggle between showing and hiding the sidebar, and add overlay effect
-        function w3_open() {
-            if (mySidebar.style.display === 'block') {
-                mySidebar.style.display = 'none';
-                overlayBg.style.display = "none";
-            } else {
-                mySidebar.style.display = 'block';
-                overlayBg.style.display = "block";
-            }
-        }
+    // Get the DIV with overlay effect
+    var overlayBg = document.getElementById("myOverlay");
 
-        // Close the sidebar with the close button
-        function w3_close() {
-            mySidebar.style.display = "none";
+    // Toggle between showing and hiding the sidebar, and add overlay effect
+    function w3_open() {
+        if (mySidebar.style.display === 'block') {
+            mySidebar.style.display = 'none';
             overlayBg.style.display = "none";
+        } else {
+            mySidebar.style.display = 'block';
+            overlayBg.style.display = "block";
         }
-        function filterTable() {
+    }
+
+    // Close the sidebar with the close button
+    function w3_close() {
+        mySidebar.style.display = "none";
+        overlayBg.style.display = "none";
+    }
+
+    function filterTable() {
         var input, filter, table, tr, td, i, txtValue;
         input = document.getElementById("myInput");
         filter = input.value.toUpperCase();
@@ -195,6 +198,29 @@
                 }
             }
         }
-    </script>
-    </body>
-    </html>
+    }
+
+    function filterMan() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myIn");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTab");
+        tr = table.getElementsByTagName("tr");
+        for (i = 1; i < tr.length; i++) {
+            tr[i].style.display = "none";
+            td = tr[i].getElementsByTagName("td");
+            for (var j = 0; j < td.length; j++) {
+                cell = tr[i].getElementsByTagName("td")[j];
+                if (cell) {
+                    if (cell.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                        break;
+                    }
+                }
+            }
+        }
+    }
+</script>
+</body>
+
+</html>
