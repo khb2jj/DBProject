@@ -19,6 +19,9 @@ a:hover{
      width: 300px;
      margin: 0 auto;
 }
+input, label {
+     display:block;
+}
 input[type='text'], input[type='email'],
 input[type='password'] {
      width: 200px;
@@ -50,3 +53,4 @@ input[type='submit']:hover {
      margin-right: auto;
      width: 50%;
    }
+

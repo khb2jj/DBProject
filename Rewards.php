@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html>
-    <?php
-        // header begins body tag
-        include('Header.php');
-        echo "<br>";
-        
-        // make the user login first 
-        if(!isset($_SESSION['user'])) {
-            header('location: Home.php');
-        }
-        // if the user is logged in, display the home page content
-        else {
-    ?>
-    
+<?php
+// header begins body tag
+include('Header.php');
+echo "<br>";
+
+// make the user login first 
+if (!isset($_SESSION['user'])) {
+    header('location: Home.php');
+}
+// if the user is logged in, display the home page content
+else {
+?>
+
     <div class="container" style="text-align:center">
-        <h1> Rewards  </h1>
+        <h1> Rewards </h1>
     </div>
 
     <div class="w3-container">
-    <button style="font-size: 20px; background-color:yellow; border: solid 2px; border-radius: 5px;" onClick='location.href="addRewards.php"'>Insert Rewards  <i class="fa fa-arrow-right"></i></button>
-        <input class="contentcontainer med left" style="font-size: 20px; float: right; border: solid 2px; border-radius: 5px;" type="text" id="myInput" onkeyup="filterTable()" placeholder="Search...">
-
+        <button style="font-size: 20px; background-color:yellow; border: solid 2px; border-radius: 5px;" onClick='location.href="addRewards.php"'>Insert Rewards  <i class="fa fa-arrow-right"></i></button>
+        <div style="float:right">
+            <label style="font-size: 20px;" for="myInput">Search Table</label>
+            <input class="contentcontainer med left" style="font-size: 20px; border: solid 2px; border-radius: 5px;" type="text" id="myInput" onkeyup="filterTable()" placeholder="Search...">
+        </div>
         <br></br>
         <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white" id="myTable">
             <tr>
@@ -86,33 +88,34 @@
     </div>
 
 
-    <?php } // close out else tag ?>
-    
-    <script>
-        // Get the Sidebar
-        var mySidebar = document.getElementById("mySidebar");
+<?php } // close out else tag 
+?>
 
-        // Get the DIV with overlay effect
-        var overlayBg = document.getElementById("myOverlay");
+<script>
+    // Get the Sidebar
+    var mySidebar = document.getElementById("mySidebar");
 
-        // Toggle between showing and hiding the sidebar, and add overlay effect
-        function w3_open() {
-            if (mySidebar.style.display === 'block') {
-                mySidebar.style.display = 'none';
-                overlayBg.style.display = "none";
-            } else {
-                mySidebar.style.display = 'block';
-                overlayBg.style.display = "block";
-            }
-        }
+    // Get the DIV with overlay effect
+    var overlayBg = document.getElementById("myOverlay");
 
-        // Close the sidebar with the close button
-        function w3_close() {
-            mySidebar.style.display = "none";
+    // Toggle between showing and hiding the sidebar, and add overlay effect
+    function w3_open() {
+        if (mySidebar.style.display === 'block') {
+            mySidebar.style.display = 'none';
             overlayBg.style.display = "none";
+        } else {
+            mySidebar.style.display = 'block';
+            overlayBg.style.display = "block";
         }
+    }
 
-        function filterTable() {
+    // Close the sidebar with the close button
+    function w3_close() {
+        mySidebar.style.display = "none";
+        overlayBg.style.display = "none";
+    }
+
+    function filterTable() {
         var input, filter, table, tr, td, i, txtValue;
         input = document.getElementById("myInput");
         filter = input.value.toUpperCase();
@@ -132,6 +135,7 @@
             }
         }
     }
-    </script>
-    </body>
+</script>
+</body>
+
 </html>
