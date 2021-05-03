@@ -19,6 +19,15 @@ else {
         $c = $_REQUEST['c'];
         $d = $_REQUEST['d'];
 
+        $stmt = $con->prepare("UPDATE rewards
+                                SET customerID=?, r_available=?, r_expiration=?
+                                WHERE rewardsID=?");
+        $stmt->bind_param("issi", $b, $c, $d, $a);
+        $stmt->execute();
+
+        $stmt->close();
+
+        /*
         $sql = "UPDATE rewards
         SET customerID='$b', r_available='$c', r_expiration='$d'
         WHERE rewardsID='$a'";
@@ -26,6 +35,7 @@ else {
         if (!mysqli_query($con, $sql)) {
             die('Error: ' . mysqli_error($con));
         }
+        */
         $status = "New Record Updated Successfully.";
         echo "<script> window.location.assign('Rewards.php'); </script>";
         $con->close();

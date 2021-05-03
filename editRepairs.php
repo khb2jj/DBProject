@@ -20,13 +20,21 @@ else {
         $d = $_REQUEST['d'];
         $e = $_REQUEST['e'];
 
+        $stmt = $con->prepare("UPDATE repairs
+                                SET customerID=?, employeeID=?, repair_description=?, repair_date=?
+                                WHERE repairID=?");
+        $stmt->bind_param("iissi", $b, $c, $d, $e, $a);
+        $stmt->execute();
+
+        $stmt->close();
+        /*
         $sql = "UPDATE repairs
         SET customerID='$b', employeeID='$c', repair_description='$d', repair_date='$e'
         WHERE repairID='$a'";
 
         if (!mysqli_query($con, $sql)) {
             die('Error: ' . mysqli_error($con));
-        }
+        } */
         $status = "New Record Updated Successfully.";
         echo "<script> window.location.assign('Repairs.php'); </script>";
         $con->close();

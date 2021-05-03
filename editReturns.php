@@ -19,6 +19,15 @@ else {
         $c = $_REQUEST['c'];
         $d = $_REQUEST['d'];
 
+        $stmt = $con->prepare("UPDATE returns
+                                SET customerID=?, productID=?, date=?
+                                WHERE returnID=?");
+        $stmt->bind_param("iisi", $b, $c, $d, $a);
+        $stmt->execute();
+
+        $stmt->close();
+
+        /*
         $sql = "UPDATE returns
         SET customerID='$b', productID='$c', date='$d'
         WHERE returnID='$a'";
@@ -26,6 +35,7 @@ else {
         if (!mysqli_query($con, $sql)) {
             die('Error: ' . mysqli_error($con));
         }
+        */
         $status = "New Record Updated Successfully.";
         echo "<script> window.location.assign('Returns.php'); </script>";
         $con->close();
