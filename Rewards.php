@@ -14,7 +14,7 @@
     ?>
     
     <div class="container" style="text-align:center">
-        <h1> Rewards page </h1>
+        <h1> Rewards  </h1>
     </div>
 
     <div class="w3-container">

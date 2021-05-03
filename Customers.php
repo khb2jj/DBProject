@@ -14,7 +14,7 @@ else {
 ?>
 
     <div class="container" style="text-align:center">
-        <h1> Customers Page </h1>
+        <h1> Customers </h1>
     </div>
 
     <div class="w3-container">

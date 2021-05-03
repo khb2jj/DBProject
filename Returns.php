@@ -14,7 +14,7 @@
     ?>
     
     <div class="container" style="text-align:center">
-        <h1> Returns page </h1>
+        <h1> Returns</h1>
     </div>
 
     <div class="w3-container">
