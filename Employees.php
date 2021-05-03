@@ -49,12 +49,12 @@
 
     <div class="w3-container">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <form action="InsertEmployee.php" method="get">
                     <input type="submit" style="font-size: 20px; background-color:yellow; border: solid 2px; border-radius: 5px;" value="Insert New Employee"/>
                 </form>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8" style="display: flex; justify-content: flex-end">
                 <form action="Employees.php" method="post">
                     <label style="font-size: 20px;" for="store_id"> Search employees by store number: </label>
                     <input style="font-size: 20px;" type="text" name="store_id" placeholder="Store Number">

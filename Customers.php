@@ -25,10 +25,10 @@ else {
         <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white" id="myTable">
             <tr>
                 <th>Customer ID</th>
+                <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Address</th>
-                <th>Name</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -59,10 +59,10 @@ else {
             ?>
                     <tr>
                         <td> <?php echo $row["customerID"]; ?> </td>
+                        <td> <?php echo $row["name"]; ?> </td>
                         <td> <?php echo $row["email"]; ?> </td>
                         <td> <?php echo $row["phone"]; ?> </td>
                         <td> <?php echo $row["address"]; ?> </td>
-                        <td> <?php echo $row["name"]; ?> </td>
                         <td>
                             <form method="POST">
                                 <input type="submit" name="button2" value="Edit" />
