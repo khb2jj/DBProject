@@ -57,9 +57,9 @@ else {
             <h1>Insert New Record</h1>
             <form name="form" method="post" action="">
                 <input type="hidden" name="new" value="1" />
-                <p><input type="text" name="a" value="<?php echo $id ?>" readonly /></p>
-                <p><input type="text" name="b" value="<?php echo $row1['address'] ?>" required /></p>
-                <p><input type="text" name="c" value="<?php echo $row2['managerID'] ?>" required /></p>
+                <p>Store ID: <input type="text" name="a" value="<?php echo $id ?>" readonly /></p>
+                <p>Store Address: <input type="text" name="b" value="<?php echo $row1['address'] ?>" required /></p>
+                <p>Manager ID: <input type="text" name="c" value="<?php echo $row2['managerID'] ?>" required /></p>
 
 
                 <p><input name="submit" type="submit" value="Submit" /></p>

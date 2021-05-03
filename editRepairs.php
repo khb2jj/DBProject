@@ -62,11 +62,11 @@ else {
             <h1>Insert New Record</h1>
             <form name="form" method="post" action="">
                 <input type="hidden" name="new" value="1" />
-                <p><input type="text" name="a" value="<?php echo $id ?>" readonly /></p>
-                <p><input type="text" name="b" value="<?php echo $row1['customerID'] ?>" required /></p>
-                <p><input type="text" name="c" value="<?php echo $row2['employeeID'] ?>" required /></p>
-                <p><input type="text" name="d" value="<?php echo $row3['repair_description'] ?>" required /></p>
-                <p><input type="text" name="e" value="<?php echo $row4['repair_date'] ?>" required /></p>
+                <p>Repair ID: <input type="text" name="a" value="<?php echo $id ?>" readonly /></p>
+                <p>Customer ID: <input type="text" name="b" value="<?php echo $row1['customerID'] ?>" required /></p>
+                <p>Employee ID: <input type="text" name="c" value="<?php echo $row2['employeeID'] ?>" required /></p>
+                <p>Repair Description: <input type="text" name="d" value="<?php echo $row3['repair_description'] ?>" required /></p>
+                <p>Repair Date: <input type="text" name="e" value="<?php echo $row4['repair_date'] ?>" required /></p>
 
                 <p><input name="submit" type="submit" value="Submit" /></p>
                 <p style="color:#FF0000;"><?php echo $status; ?></p>

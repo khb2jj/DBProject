@@ -59,10 +59,10 @@ else {
             <h1>Insert New Record</h1>
             <form name="form" method="post" action="">
                 <input type="hidden" name="new" value="1" />
-                <p><input type="text" name="a" value="<?php echo $id ?>" readonly /></p>
-                <p><input type="text" name="b" value="<?php echo $row1['customerID'] ?>" required /></p>
-                <p><input type="text" name="c" value="<?php echo $row2['r_available'] ?>" required /></p>
-                <p><input type="text" name="d" value="<?php echo $row3['r_expiration'] ?>" required /></p>
+                <p>Rewards ID: <input type="text" name="a" value="<?php echo $id ?>" readonly /></p>
+                <p>Customer ID: <input type="text" name="b" value="<?php echo $row1['customerID'] ?>" required /></p>
+                <p>Rewards Available: <input type="text" name="c" value="<?php echo $row2['r_available'] ?>" required /></p>
+                <p>Rewards Expiration: <input type="text" name="d" value="<?php echo $row3['r_expiration'] ?>" required /></p>
 
                 <p><input name="submit" type="submit" value="Submit" /></p>
                 <p style="color:#FF0000;"><?php echo $status; ?></p>
