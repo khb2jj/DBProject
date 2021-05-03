@@ -17,7 +17,15 @@ else {
         $a = $_REQUEST['a'];
         $b = $_REQUEST['b'];
         $c = $_REQUEST['c'];
+       
+        $stmt = $con->prepare("UPDATE stores
+        SET address=?, managerID=?
+        WHERE store_id=?");
+        $stmt->bind_param("isi", $b, $c, $a);
+        $stmt->execute();
 
+        $stmt->close();
+        /*    
         $sql = "UPDATE stores
         SET address='$b', managerID='$c'
         WHERE store_id='$a'";
@@ -25,6 +33,7 @@ else {
         if (!mysqli_query($con, $sql)) {
             die('Error: ' . mysqli_error($con));
         }
+        */
         $status = "New Record Updated Successfully.";
         echo "<script> window.location.assign('Stores.php'); </script>";
         $con->close();

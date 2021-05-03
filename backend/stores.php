@@ -3,6 +3,15 @@
 function storesInsert($store_id, $address, $managerID)
 {
     require('db.php');
+
+    $stmt = $con->prepare("INSERT INTO stores
+    (`store_id`,`address`, `managerID`) VALUES
+    (?,?, ?)");
+    $stmt->bind_param("isi", $store_id, $address, $managerID);
+    $stmt->execute();
+
+    $stmt->close();
+    /*
     $sql = "INSERT INTO stores
     (`store_id`,`address`, `managerID`) VALUES
     ('$store_id','$address', '$managerID')";
@@ -11,7 +20,7 @@ function storesInsert($store_id, $address, $managerID)
         die('Error: ' . mysqli_error($con));
     }
     mysqli_close($con);
-
+    */
 }
 
 function storesDelete($store_id)
