@@ -19,6 +19,15 @@ else {
         $c = $_REQUEST['c'];
         $d = $_REQUEST['d'];
 
+        $stmt = $con->prepare("UPDATE purchases
+                            SET customerID=?, productID=?, date=?
+                            WHERE purchaseID=?");
+        $stmt->bind_param("iisi", $b, $c, $d, $a);
+        $stmt->execute();
+
+        $stmt->close();
+
+        /*
         $sql = "UPDATE purchases
         SET customerID='$b', productID='$c', date='$d'
         WHERE purchaseID='$a'";
@@ -26,6 +35,7 @@ else {
         if (!mysqli_query($con, $sql)) {
             die('Error: ' . mysqli_error($con));
         }
+        */
         $status = "New Record Updated Successfully.";
         echo "<script> window.location.assign('Purchases.php'); </script>";
         $con->close();
