@@ -51,7 +51,7 @@ else {
             </div>
             <div class="form-group">
                 <label style="font-size:20px" for="e">Store ID: </label>
-                <input style="font-size:20px" type="text" name="e" placeholder="Store ID" required />
+                <input style="font-size:20px" type="number" name="e" placeholder="Store ID" required />
             </div>
             <div class="form-group">
                 <label style="font-size:20px" for="d">Purchase Date: </label>
