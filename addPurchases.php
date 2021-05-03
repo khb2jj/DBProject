@@ -22,8 +22,9 @@ else {
         $b = $_REQUEST['b'];
         $c = $_REQUEST['c'];
         $d = $_REQUEST['d'];
+        $e = $_REQUEST['e'];
 
-        purchasesInsert($a, $b, $c, $d);
+        purchasesInsert($a, $b, $c, $e, $d);
 
         $status = "New Record Inserted Successfully.";
         echo "<script> window.location.assign('Purchases.php'); </script>";
@@ -47,6 +48,10 @@ else {
             <div class="form-group">
                 <label style="font-size:20px" for="c">Product ID: </label>
                 <input style="font-size:20px" type="number" name="c" placeholder="Product ID" required />
+            </div>
+            <div class="form-group">
+                <label style="font-size:20px" for="e">Store ID: </label>
+                <input style="font-size:20px" type="text" name="e" placeholder="Store ID" required />
             </div>
             <div class="form-group">
                 <label style="font-size:20px" for="d">Purchase Date: </label>

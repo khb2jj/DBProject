@@ -29,6 +29,7 @@
                 <th>Purchase ID</th>
                 <th>Customer ID</th>
                 <th>Product ID</th>
+                <th>Store ID</th>
                 <th>Date</th>
                 <th></th>
                 <th></th>
@@ -62,6 +63,7 @@
                         <td> <?php echo $row["purchaseID"]; ?> </td>
                         <td> <?php echo $row["customerID"]; ?> </td>
                         <td> <?php echo $row["productID"]; ?> </td>
+                        <td> <?php echo $row["storeID"]; ?> </td>
                         <td> <?php echo $row["date"]; ?> </td>
                         <td>
                             <form method="POST">

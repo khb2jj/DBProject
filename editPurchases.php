@@ -18,11 +18,12 @@ else {
         $b = $_REQUEST['b'];
         $c = $_REQUEST['c'];
         $d = $_REQUEST['d'];
+        $e = $_REQUEST['e']; // store ID
 
         $stmt = $con->prepare("UPDATE purchases
-                            SET customerID=?, productID=?, date=?
+                            SET customerID=?, productID=?, storeID=?, date=?
                             WHERE purchaseID=?");
-        $stmt->bind_param("iisi", $b, $c, $d, $a);
+        $stmt->bind_param("iiisi", $b, $c, $e, $d, $a);
         $stmt->execute();
 
         $stmt->close();
@@ -55,6 +56,8 @@ else {
     $row2 = mysqli_fetch_array($productID);
     $date = mysqli_query($con, "SELECT date FROM purchases WHERE purchaseID='$id'");
     $row3 = mysqli_fetch_array($date);
+    $storeID = mysqli_query($con, "SELECT storeID FROM purchases WHERE purchaseID='$id'");
+    $row4 = mysqli_fetch_array($storeID);
     $con->close();
 ?>
         <div class="container" style="text-align:center">
@@ -72,6 +75,10 @@ else {
                 <div class="form-group">
                     <label style="font-size:20px" for="c">Product ID: </label>
                     <input style="font-size:20px" type="number" name="c" value="<?php echo $row2['productID'] ?>" required />
+                </div>
+                <div class="form-group">
+                    <label style="font-size:20px" for="e">Store ID: </label>
+                    <input style="font-size:20px" type="number" name="e" value="<?php echo $row4['storeID'] ?>" required />
                 </div>
                 <div class="form-group">
                     <label style="font-size:20px" for="d">Purchase Date: </label>

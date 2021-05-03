@@ -1,13 +1,13 @@
 <?php
 
-function purchasesInsert($purchaseID, $customerID, $productID, $date)
+function purchasesInsert($purchaseID, $customerID, $productID, $storeID, $date)
 {
     require('db.php');
 
     $stmt = $con->prepare("INSERT INTO purchases
-                            (`purchaseID`,`customerID`, `productID`, `date`) VALUES
-                            (?,?,?,?)");
-    $stmt->bind_param("iiis", $purchaseID, $customerID, $productID, $date);
+                            (`purchaseID`,`customerID`, `productID`, 'storeID', `date`) VALUES
+                            (?,?,?,?,?)");
+    $stmt->bind_param("iiiis", $purchaseID, $customerID, $productID, $storeID, $date);
     $stmt->execute();
 
     $stmt->close();
