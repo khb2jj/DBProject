@@ -3,7 +3,7 @@
 <?php
 // header begins body tag
 include('Header.php');
-echo "<br> <br> <br> <br>";
+echo "<br>";
 
 // make the user login first 
 if (!isset($_SESSION['user'])) {
@@ -31,24 +31,25 @@ else {
 }
 ?>
 
-<head>
-    <meta charset="utf-8">
-    <title>Insert New Store </title>
-    <link rel="stylesheet" href="css/style.css" />
-</head>
-
-<body>
-    <div class="form">
-        <h1>Insert New Store</h1>
+    <div class="container" style="text-align:center">
+        <h1>New Store</h1>
         <form name="form" method="post" action="">
             <input type="hidden" name="new" value="1" />
-            <p><input type="text" name="a" placeholder="Store ID" required /></p>
-            <p><input type="text" name="b" placeholder="Address" required /></p>
-            <p><input type="text" name="c" placeholder="Manager ID" required /></p>
-
-            <p><input name="submit" type="submit" value="Submit" /></p>
+            <div class="form-group">
+                <label for="a" style="font-size:20px">Store ID: </label>
+                <input style="font-size:20px;" type="number" name="a" placeholder="Store ID" required/>
+            </div>
+            <div class="form-group">
+                <label for="b" style="font-size:20px">Address: </label>
+                <input style="font-size:20px;" type="text" name="b" placeholder="Address" required/>
+            </div>
+            <div class="form-group">
+                <label for="a" style="font-size:20px">Manager ID: </label>
+                <input style="font-size:20px;" type="number" name="c" placeholder="Manager ID" required/>
+            </div>
+            <input style="background-color:yellow; font-size:20px; border: black solid 2px; border-radius:5px; color:black" name="submit" type="submit" value="Submit" />
             <p style="color:#FF0000;"><?php echo $status; ?></p>
-    </div>
+        </form>
     </div>
     <script>
         // Get the Sidebar

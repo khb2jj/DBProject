@@ -2,7 +2,7 @@
 <html>
 <?php
 include('header.php');
-echo "<br> <br> <br> <br>";
+echo "<br>";
 
 // make the user login first 
 if (!isset($_SESSION['user'])) {
@@ -46,26 +46,29 @@ else {
     $con->close();
 ?>
 
-    <head>
-        <meta charset="utf-8">
-        <title>Insert Manufacturer </title>
-        <link rel="stylesheet" href="css/style.css" />
-    </head>
-
-    <body>
-        <div class="form">
-            <h1>Insert New Record</h1>
+        <div class="container" style="text-align:center">
+            <h1>Edit Manufacturer</h1>
             <form name="form" method="post" action="">
                 <input type="hidden" name="new" value="1" />
-                <p>Manufacturer ID: <input type="text" name="a" value="<?php echo $id ?>" readonly /></p>
-                <p>Name: <input type="text" name="b" value="<?php echo $row1['name'] ?>" required /></p>
-                <p>Phone: <input type="text" name="c" value="<?php echo $row2['phone'] ?>" required /></p>
+                <div class="form-group">
+                    <label style="font-size:20px" for="a">Manufacturer ID: </label>
+                    <input style="font-size:20px" type="number" size="5" name="a" value="<?php echo $id ?>" readonly />
+                </div>
+                <div class="form-group">
+                    <label style="font-size:20px" for="b">Name: </label>
+                    <input style="font-size:20px" type="text" name="b" value="<?php echo $row1['name'] ?>" required />
+                </div>
+                <div class="form-group">
+                    <label style="font-size:20px" for="c">Phone </label>
+                    <input style="font-size:20px" type="text" name="c" value="<?php echo $row2['phone'] ?>" required />
+                </div>
 
 
-                <p><input name="submit" type="submit" value="Submit" /></p>
+                <p><input style="background-color:yellow; font-size:20px; border: black solid 2px; border-radius:5px; color:black" name="submit" type="submit" value="Submit" /></p>
                 <p style="color:#FF0000;"><?php echo $status; ?></p>
+            </form>
         </div>
-        </div>
+        
         <script>
             // Get the Sidebar
             var mySidebar = document.getElementById("mySidebar");

@@ -3,7 +3,7 @@
 <?php
 // header begins body tag
 include('Header.php');
-echo "<br> <br> <br> <br>";
+echo "<br>";
 
 // make the user login first 
 if (!isset($_SESSION['user'])) {
@@ -33,27 +33,34 @@ else {
 }
 ?>
 
-<head>
-    <meta charset="utf-8">
-    <title>Insert New Customer </title>
-    <link rel="stylesheet" href="css/style.css" />
-</head>
-
-<body>
-    <div class="form">
-        <h1>Insert New Record</h1>
+    <div class="container" style="text-align:center">
+        <h1>New Customer</h1>
         <form name="form" method="post" action="">
             <input type="hidden" name="new" value="1" />
-            <p><input type="text" name="a" placeholder="Customer ID" required /></p>
-            <p><input type="text" name="b" placeholder="Email" required /></p>
-            <p><input type="text" name="c" placeholder="Phone" required /></p>
-            <p><input type="text" name="d" placeholder="Address" required /></p>
-            <p><input type="text" name="e" placeholder="Name" required /></p>
-
-            <p><input name="submit" type="submit" value="Submit" /></p>
+            <div class="form-group">
+                <label style="font-size:20px" for="a">Customer ID:</label>
+                <input style="font-size:20px" type="text" name="a" placeholder="Customer ID" required />
+            </div>
+            <div>
+                <label style="font-size:20px" for="e">Name: </label>
+                <input style="font-size:20px" type="text" name="e" placeholder="Name" required />
+            </div> <br>
+            <div class="form-group">
+                <label style="font-size:20px" for="b">Email:</label>
+                <input style="font-size:20px" type="text" name="b" placeholder="Email" required />
+            </div>
+            <div class="form-group">
+                <label style="font-size:20px" for="c">Phone:</label>
+                <input style="font-size:20px" type="text" name="c" placeholder="Phone" required />
+            </div>
+            <div class="form-group">
+                <label style="font-size:20px" for="d">Address:</label>
+                <input style="font-size:20px" type="text" name="d" placeholder="Address" required />
+            </div>
+            <input style="background-color:yellow; font-size:20px; border: black solid 2px; border-radius:5px; color:black" name="submit" type="submit" value="Submit" />
             <p style="color:#FF0000;"><?php echo $status; ?></p>
     </div>
-    </div>
+    
     <script>
         // Get the Sidebar
         var mySidebar = document.getElementById("mySidebar");

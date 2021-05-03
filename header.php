@@ -66,7 +66,7 @@
     <div class="w3-bar-block">
       <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
       <a href="Home.php" class="w3-bar-item w3-button w3-padding w3"><i class="fa fa-home fa-fw"></i>  Home</a>
-      <a href="Customers.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Customers</a>
+      <a href="Customers.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Customers</a>
       <a href="Employees.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-vcard fa-fw"></i>  Employees</a>
       <a href="Stores.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-dropbox fa-fw"></i>  Stores & Manufacturers</a>
       <a href="Inventory.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Inventory</a>

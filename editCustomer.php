@@ -2,7 +2,7 @@
 <html>
 <?php
 include('header.php');
-echo "<br> <br> <br> <br>";
+echo "<br>";
 
 // make the user login first 
 if (!isset($_SESSION['user'])) {
@@ -53,26 +53,33 @@ else {
     $row4 = mysqli_fetch_array($name);
     $con->close();
 ?>
-
-    <head>
-        <meta charset="utf-8">
-        <title>Insert New Customer </title>
-        <link rel="stylesheet" href="css/style.css" />
-    </head>
-
-    <body>
-        <div class="form">
-            <h1>Insert New Record</h1>
+        <div class="container" style="text-align: center">
+            <h1>Edit Customer</h1>
             <form name="form" method="post" action="">
                 <input type="hidden" name="new" value="1" />
-                <p>Customer ID: <input type="text" name="a" value="<?php echo $row['customerID'] ?>" readonly /></p>
-                <p>Email: <input type="text" name="b" value="<?php echo $row1['email'] ?>" required /></p>
-                <p>Phone: <input type="text" name="c" value="<?php echo $row2['phone'] ?>" required /></p>
-                <p>Address: <input type="text" name="d" value="<?php echo $row3['address'] ?>" required /></p>
-                <p>Name: <input type="text" name="e" value="<?php echo $row4['name'] ?>" required /></p>
-
-                <p><input name="submit" type="submit" value="Submit" /></p>
+                <div class="form-group">
+                    <label style="font-size: 20px;" for="a">Customer ID: </label>
+                    <input style="font-size: 20px;" type="text" name="a" value="<?php echo $row['customerID'] ?>" readonly/>
+                </div>
+                <div class="form-group">
+                    <label style="font-size: 20px;" for="b">Email: </label>
+                    <input style="font-size: 20px;" type="text" name="b" value="<?php echo $row1['email'] ?>" required />
+                </div>
+                <div class="form-group">    
+                    <label style="font-size: 20px;" for="c">Phone: </label>
+                    <input  style="font-size: 20px;" type="text" name="c" value="<?php echo $row2['phone'] ?>" required />
+                </div>
+                <div class="form-group">
+                    <label style="font-size: 20px;" for="d">Address: </label>
+                    <input style="font-size: 20px;" type="text" name="d" value="<?php echo $row3['address'] ?>" required />
+                </div>
+                <div class="form-group">
+                    <label style="font-size: 20px;" for="e">Name: </label>
+                    <input style="font-size: 20px;" type="text" name="e" value="<?php echo $row4['name'] ?>" required />
+                </div>
+                <p><input style="background-color:yellow; font-size:20px; border: black solid 2px; border-radius:5px; color:black" name="submit" type="submit" value="Submit" /></p>
                 <p style="color:#FF0000;"><?php echo $status; ?></p>
+            </form>
         </div>
         </div>
         <script>
