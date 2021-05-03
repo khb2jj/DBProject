@@ -3,6 +3,17 @@
 function inv_locInsert($productID, $store_ID, $quantity)
 {
     require('db.php');
+    
+    $stmt = $con->prepare("INSERT INTO inventory_location
+    (`productID`,`store_ID`, `quantity`) VALUES
+    (?, ?, ?)");
+    $stmt->bind_param("iii", $productID, $store_ID, $quantity);
+    $stmt->execute();
+    
+    $stmt->close();
+
+
+    /* NO SQL PROTECTION
     $sql = "INSERT INTO inventory_location
     (`productID`,`store_ID`, `quantity`) VALUES
     ('$productID','$store_ID', '$quantity')";
@@ -11,7 +22,7 @@ function inv_locInsert($productID, $store_ID, $quantity)
         die('Error: ' . mysqli_error($con));
     }
     mysqli_close($con);
-
+    */
 }
 
 function inv_locDelete($productID, $store_ID)

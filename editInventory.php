@@ -20,13 +20,16 @@ else {
         $d = $_REQUEST['d'];
         $e = $_REQUEST['e'];
         $f = $_REQUEST['f'];
-        $g = $_REQUEST['g'];
         $h = $_REQUEST['h'];
 
-        $sql = "UPDATE inventory
-        SET brand_name='$b', product_name='$c', price='$d', manufacturerID='$e'
-        WHERE productID='$a'";
+        //$sql = "UPDATE inventory SET brand_name='$b', product_name='$c', price='$d', manufacturerID='$e' WHERE productID='$a'";
 
+        $stmt = $con->prepare("UPDATE inventory SET brand_name=?, product_name=?, price=?, manufacturerID=? WHERE productID=?");
+        $stmt->bind_param("ssdii", $b, $c, $d, $e, $a);
+        $stmt->execute();
+        $stmt->close();
+
+        /*
         $sql = "UPDATE inventory_location inv_loc
                 Join inventory inv 
                 ON inv_loc.productID = inv.productID
@@ -35,10 +38,21 @@ else {
                 SET inv.brand_name='$b', inv.product_name='$c', inv.price='$d', inv.manufacturerID='$e', s.address='$g', inv_loc.quantity='$h'
                 WHERE (inv.productID='$a'
                 AND s.store_id='$f')";
+        */
 
-        if (!mysqli_query($con, $sql)) {
-            die('Error: ' . mysqli_error($con));
-        }
+        $stmt = $con->prepare("UPDATE inventory_location inv_loc
+                                Join inventory inv 
+                                ON inv_loc.productID = inv.productID
+                                Join stores s
+                                ON s.store_id = inv_loc.store_ID
+                                SET inv.brand_name=?, inv.product_name=?, inv.price=?, inv.manufacturerID=?, inv_loc.quantity=?
+                                WHERE (inv.productID=?
+                                AND s.store_id=?)");
+        $stmt->bind_param("ssdiiii", $b, $c, $d, $e, $h, $a, $f);
+        $stmt->execute();
+        $stmt->close();
+
+        
         $status = "New Record Updated Successfully.";
         echo "<script> window.location.assign('Inventory.php'); </script>";
         $con->close();
@@ -100,10 +114,6 @@ else {
                 <div class="form-group">
                     <label style="font-size:20px" for="f">Store ID: </label>
                     <input style="font-size:20px;" type="number" name="f" value="<?php echo $id2 ?>" readonly />
-                </div>
-                <div class="form-group">
-                    <label style="font-size:20px" for="g">Store Location: </label>
-                    <input style="font-size:20px;" type="text" name="g" value="<?php echo $row5['address'] ?>" readonly />
                 </div>
                 <div class="form-group">
                     <label style="font-size:20px" for="h">Quantity: </label>

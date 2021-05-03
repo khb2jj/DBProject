@@ -23,8 +23,11 @@ else {
         $c = $_REQUEST['c'];
         $d = $_REQUEST['d'];
         $e = $_REQUEST['e'];
+        $f = $_REQUEST['f'];
+        $h = $_REQUEST['h'];
 
-        inventoryInsert($a, $b, $c, $d, $e);
+        
+        inventoryInsert($a, $b, $c, $d, $e, $f, $h);
 
         $status = "New Record Inserted Successfully.";
         echo "<script> window.location.assign('Inventory.php'); </script>";
@@ -59,11 +62,7 @@ else {
             </div>
             <div class="form-group">
                 <label style="font-size:20px" for="f">Store ID: </label>
-                <input style="font-size:20px;" type="number" name="f" placeholder="Store ID" readonly />
-            </div>
-            <div class="form-group">
-                <label style="font-size:20px" for="g">Store Location: </label>
-                <input style="font-size:20px;" type="text" name="g" placeholder="Store Location" readonly />
+                <input style="font-size:20px;" type="number" name="f" placeholder="Store ID" required />
             </div>
             <div class="form-group">
                 <label style="font-size:20px" for="h">Quantity: </label>

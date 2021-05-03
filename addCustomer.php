@@ -39,7 +39,7 @@ else {
             <input type="hidden" name="new" value="1" />
             <div class="form-group">
                 <label style="font-size:20px" for="a">Customer ID:</label>
-                <input style="font-size:20px" type="text" name="a" placeholder="Customer ID" required />
+                <input style="font-size:20px" type="number" name="a" placeholder="Customer ID" required />
             </div>
             <div>
                 <label style="font-size:20px" for="e">Name: </label>

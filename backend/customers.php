@@ -6,7 +6,7 @@ function customerInsert($customerID, $email, $phone, $address, $name)
 
     $stmt = $con->prepare("INSERT INTO customers (`customerID`,`email`, `phone`, `address`, `name`) 
                                      VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssss", $customerID, $email, $phone, $address, $name);
+    $stmt->bind_param("issss", $customerID, $email, $phone, $address, $name);
     $stmt->execute();
     
     $stmt->close();

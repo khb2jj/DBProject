@@ -1,8 +1,21 @@
 <?php
 
-function inventoryInsert($productID, $brand_name, $product_name, $price, $manufacturerID)
+function inventoryInsert($productID, $brand_name, $product_name, $price, $manufacturerID, $storeID, $quantity)
 {
     require('db.php');
+
+    $stmt = $con->prepare("INSERT INTO inventory
+    (`productID`, `brand_name`, `product_name`, `price`, `manufacturerID`) VALUES
+    (?, ?, ?, ?, ?)");
+    $stmt->bind_param("issdi", $productID, $brand_name, $product_name, $price, $manufacturerID);
+    $stmt->execute();
+    
+    $stmt->close();
+
+    require('inv_loc.php');
+    inv_locInsert($productID, $storeID, $quantity);
+    
+    /*
     $sql = "INSERT INTO inventory
     (`productID`, `brand_name`, `product_name`, `price`, `manufacturerID`) VALUES
     ('$productID','$brand_name', '$product_name', '$price', '$manufacturerID')";
@@ -11,7 +24,7 @@ function inventoryInsert($productID, $brand_name, $product_name, $price, $manufa
         die('Error: ' . mysqli_error($con));
     }
     mysqli_close($con);
-
+    */
 }
 
 function inventoryDelete($productID)

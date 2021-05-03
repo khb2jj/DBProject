@@ -23,7 +23,7 @@ else {
         //$sql = "UPDATE customers SET email='$b', phone='$c', address='$d', name='$e' WHERE customerID='$a'";
 
         $stmt = $con->prepare("UPDATE customers SET email= ?, phone=?, address=?, name=? WHERE customerID=?");
-        $stmt->bind_param("sssss", $b, $c, $d, $e, $a);
+        $stmt->bind_param("ssssi", $b, $c, $d, $e, $a);
         $stmt->execute();
 
         $status = "New Record Updated Successfully.";
