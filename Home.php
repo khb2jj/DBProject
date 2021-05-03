@@ -17,7 +17,7 @@
         
         //$result = mysqli_query($db_connection, "SELECT * FROM employees WHERE username = '$username' AND password='$password'");
         $stmt = $db_connection->prepare("SELECT * FROM employees WHERE username = ? AND password = ?");
-        $stmt->bind_param("si", $username, $password);
+        $stmt->bind_param("ss", $username, $password);
         $stmt->execute();
 
         //$row = mysqli_fetch_array($result);

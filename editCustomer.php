@@ -20,13 +20,12 @@ else {
         $d = $_REQUEST['d'];
         $e = $_REQUEST['e'];
 
-        $sql = "UPDATE customers
-        SET email='$b', phone='$c', address='$d', name='$e'
-        WHERE customerID='$a'";
+        //$sql = "UPDATE customers SET email='$b', phone='$c', address='$d', name='$e' WHERE customerID='$a'";
 
-        if (!mysqli_query($con, $sql)) {
-            die('Error: ' . mysqli_error($con));
-        }
+        $stmt = $con->prepare("UPDATE customers SET email= ?, phone=?, address=?, name=? WHERE customerID=?");
+        $stmt->bind_param("sssss", $b, $c, $d, $e, $a);
+        $stmt->execute();
+
         $status = "New Record Updated Successfully.";
         echo "<script> window.location.assign('Customers.php'); </script>";
         $con->close();
