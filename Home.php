@@ -13,20 +13,28 @@
         }
 
         $username = $_POST['username'];
-        $result = mysqli_query($db_connection, "SELECT * FROM employees WHERE username = '$username'");
-        $row = mysqli_fetch_array($result);
+        $password = $_POST['password'];
         
-        mysqli_close($db_connection);
+        //$result = mysqli_query($db_connection, "SELECT * FROM employees WHERE username = '$username' AND password='$password'");
+        $stmt = $db_connection->prepare("SELECT * FROM employees WHERE username = ? AND password = ?");
+        $stmt->bind_param("si", $username, $password);
+        $stmt->execute();
+
+        //$row = mysqli_fetch_array($result);
+        //mysqli_close($db_connection);
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        $stmt->close();
 
         // if there is no user with this username, alert
-        if($row['username'] == $_POST['username'] && $row['password'] == $_POST['password']) {
-            session_start();
-            $_SESSION['user'] = $_POST['username'];
-            $_SESSION['pwd'] = $_POST['password'];  // in reality, don't save password directly, hash instead
-            header("Location: Home.php");
-        } 
-        else { 
+        if($result->num_rows == 0) {
             echo "<script> alert('Username and/or password do not match our record'); </script>";
+        }
+        else { 
+            session_start();
+            $_SESSION['user'] = $row['username'];
+            $_SESSION['pwd'] = $row['password'];  // in reality, don't save password directly, hash instead
+            header("Location: Home.php");        
         }
     }
 ?>
