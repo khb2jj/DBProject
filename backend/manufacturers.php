@@ -3,6 +3,14 @@
 function manufacturersInsert($manufacturerID, $name, $phone)
 {
     require('db.php');
+
+    $stmt = $con->prepare("INSERT INTO manufacturers VALUES (?, ?, ?)");
+    $stmt->bind_param("iss", $manufacturerID, $name, $phone);
+    $stmt->execute();
+
+    $stmt->close();
+
+    /*
     $sql = "INSERT INTO manufacturers
     (`manufacturerID`,`name`, `phone`) VALUES
     ('$manufacturerID','$name', '$phone')";
@@ -11,7 +19,7 @@ function manufacturersInsert($manufacturerID, $name, $phone)
         die('Error: ' . mysqli_error($con));
     }
     mysqli_close($con);
-
+    */
 }
 
 function manufacturersDelete($manufacturerID)

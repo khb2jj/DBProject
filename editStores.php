@@ -21,7 +21,7 @@ else {
         $stmt = $con->prepare("UPDATE stores
         SET address=?, managerID=?
         WHERE store_id=?");
-        $stmt->bind_param("isi", $b, $c, $a);
+        $stmt->bind_param("sii", $b, $c, $a);
         $stmt->execute();
 
         $stmt->close();

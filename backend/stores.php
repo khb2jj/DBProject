@@ -6,7 +6,7 @@ function storesInsert($store_id, $address, $managerID)
 
     $stmt = $con->prepare("INSERT INTO stores
     (`store_id`,`address`, `managerID`) VALUES
-    (?,?, ?)");
+    (?, ?, ?)");
     $stmt->bind_param("isi", $store_id, $address, $managerID);
     $stmt->execute();
 
