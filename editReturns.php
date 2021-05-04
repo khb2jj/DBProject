@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php
-include('header.php');
+include('Header.php');
 echo "<br>";
 
 // make the user login first 

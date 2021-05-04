@@ -15,19 +15,20 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
         
-        //$result = mysqli_query($db_connection, "SELECT * FROM employees WHERE username = '$username' AND password='$password'");
-        $stmt = $db_connection->prepare("SELECT * FROM employees WHERE username = ? AND password = ?");
-        $stmt->bind_param("ss", $username, $password);
-        $stmt->execute();
+        $result = mysqli_query($db_connection, "SELECT * FROM employees WHERE username = '$username' AND password='$password'");
+        //$stmt = $db_connection->prepare("SELECT * FROM employees WHERE username = ? AND password = ?");
+        //$stmt->bind_param("ss", $username, $password);
+        //$stmt->execute();
 
-        //$row = mysqli_fetch_array($result);
-        //mysqli_close($db_connection);
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-        $stmt->close();
+        $row = mysqli_fetch_array($result);
+        mysqli_close($db_connection);
+        //$result = $stmt->get_result();
+        //$row = $result->fetch_assoc();
+        //$stmt->close();
 
         // if there is no user with this username, alert
-        if($result->num_rows == 0) {
+        //if($result->num_rows == 0) {
+        if(!$row) {
             echo "<script> alert('Username and/or password do not match our record'); </script>";
         }
         else { 
